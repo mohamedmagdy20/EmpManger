@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests\User;
+namespace App\Http\Requests\Employee;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class FilterRequest extends FormRequest
+class FilterEmployee extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -14,7 +14,6 @@ class FilterRequest extends FormRequest
     public function authorize()
     {
         return true;
-
     }
 
     /**
@@ -25,8 +24,13 @@ class FilterRequest extends FormRequest
     public function rules()
     {
         return [
+            'gender'=>'nullable',
+            'age'=>'nullable',
+            'job_id'=>'nullable',
+            'status'=>'nullable',
+            'salary_from'=>'nullable',
+            'salary_to'=>'nullable'
             //
-            'status'=>'nullable'
         ];
     }
 }

@@ -3,11 +3,11 @@
 
 
 <div class="page-header">
-    <h3 class="page-title"> Roles</h3>
+    <h3 class="page-title"> Jobs</h3>
     <nav aria-label="breadcrumb">
       <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="{{route('dashboard')}}">Dashboard</a></li>
-        <li class="breadcrumb-item active"><a href="{{route('dashboard.roles.index')}}">Roles</a></li>
+        <li class="breadcrumb-item active"><a href="">Jobs</a></li>
      
       </ol>
     </nav>
@@ -18,16 +18,16 @@
         <div class="card-body">
           <div class="row justify-content-between align-items-center">
             <div class="col-md-6">
-              <h4 class="card-title">Show Roles</h4>
+              <h4 class="card-title">Show Jobs</h4>
             </div>
             <div class="col-md-6">
-              <a href="{{route('dashboard.roles.create')}}" class="btn btn-success">Add Roles <i class="fa fa-plus" style="font-size: 15px;"></i></a>
+              <a href="{{route('dashboard.jobs.create')}}" class="btn btn-success">Add Jobs <i class="fa fa-plus" style="font-size: 15px;"></i></a>
             </div>
           </div>
   
           
           <div class="table-responsive">
-              <table class="table table-striped" id="role-table">
+              <table class="table table-striped" id="job-table">
                   <thead>
                     <tr>
                       <th> Name </th>
@@ -53,12 +53,12 @@
 <script>
 
     
-let RolesTable = null
+let JobsTable = null
 
 function setRolesDatatable() {
-    var url = "{{ route('dashboard.roles.data') }}";
+    var url = "{{ route('dashboard.jobs.data') }}";
     
-    UsersTable = $("#role-table").DataTable({
+    JobsTable = $("#job-table").DataTable({
         processing: true,
         serverSide: true,
         dom: 'Blfrtip',
@@ -78,7 +78,7 @@ function setRolesDatatable() {
         
         columns: [
             {
-                data: 'display_name'
+                data: 'name'
             },
             {
                 data: 'description'
@@ -91,6 +91,48 @@ function setRolesDatatable() {
 }
 
 setRolesDatatable();
+
+
+function deleteConfirmation(id) {
+        swal({
+            title: "Delete?",
+            text: "Please ensure and then confirm!",
+            type: "warning",
+            showCancelButton: !0,
+            confirmButtonText: "Yes, delete it!",
+            cancelButtonText: "No, cancel!",
+            reverseButtons: !0
+        }).then(function (e) {
+
+            if (e.value === true) {
+                var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
+
+                $.ajax({
+                    type: 'GET',
+                    url: "{{url('jobs/delete')}}/" + id,
+                    data: {_token: CSRF_TOKEN},
+                    dataType: 'JSON',
+                    success: function (results) {
+                            console.log(results);
+                            if(results.status == true)
+                            {
+                                swal("Done!", results.message, "success");
+                                JobsTable.ajax.reload()
+                            }
+                
+                    },
+                });
+
+            } else {
+                e.dismiss;
+            }
+
+        }, function (dismiss) {
+            return false;
+        })
+    }
+
+
 
 </script>
 @endsection

@@ -8,18 +8,29 @@
     </li>
     <li class="nav-item">
       <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
-        <span class="icon-bg"><i class="fa fa-users"></i></span>
+        <span class="icon-bg"><i class="fa fa-user"></i></span>
         <span class="menu-title">Users</span>
         <i class="menu-arrow"></i>
       </a>
       <div class="collapse" id="ui-basic">
         <ul class="nav flex-column sub-menu">
           <li class="nav-item"> <a class="nav-link" href="{{route('dashboard.users.index')}}">Show Users</a></li>
-   
           <li class="nav-item"> <a class="nav-link" href="{{route('dashboard.roles.index')}}">Roles</a></li>
-          
         </ul>
       </div>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="{{route('dashboard.jobs.index')}}">
+        <span class="icon-bg"><i class="fa-solid fa-briefcase"></i></span>
+        <span class="menu-title">Jobs</span>
+      </a>
+    </li>
+
+    <li class="nav-item">
+      <a class="nav-link" href="{{route('dashboard.employees.index')}}">
+        <span class="icon-bg"><i class="fa-solid fa-users"></i></span>
+        <span class="menu-title">Employees</span>
+      </a>
     </li>
     {{-- <li class="nav-item">
       <a class="nav-link" href="pages/icons/mdi.html">

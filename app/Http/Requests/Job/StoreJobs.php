@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests\User;
+namespace App\Http\Requests\Job;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class FilterRequest extends FormRequest
+class StoreJobs extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -14,7 +14,6 @@ class FilterRequest extends FormRequest
     public function authorize()
     {
         return true;
-
     }
 
     /**
@@ -26,7 +25,8 @@ class FilterRequest extends FormRequest
     {
         return [
             //
-            'status'=>'nullable'
+            'name'=>'required|unique:jobs,name',
+            'description'=>'nullable'
         ];
     }
 }

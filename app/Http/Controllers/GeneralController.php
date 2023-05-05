@@ -65,7 +65,7 @@ class GeneralController extends Controller
         if($oldImage)
         {
             // delete old image 
-            unlink(config('path.USERS_PATH').'/'.$oldImage);   
+            unlink($filePath.'/'.$oldImage);   
         }
 
            // add new image //

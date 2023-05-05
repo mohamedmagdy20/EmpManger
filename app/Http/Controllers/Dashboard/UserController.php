@@ -107,6 +107,8 @@ class UserController extends GeneralController
             $data['image'] =  $this->updateImage($data['image'],$user->image,config('path.USERS_PATH'));
         }
 
+        $data['password'] = Hash::make($data['password']);
+
         $user->update($data);
 
         $user->attachRole($data['role']);

@@ -4,7 +4,7 @@
       <a class="navbar-brand brand-logo-mini" href="index.html"><img src="assets/images/logo-mini.svg" alt="logo" /></a>
     </div>
     <div class="navbar-menu-wrapper d-flex align-items-stretch">
-      <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
+      {{-- <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
         <span class="mdi mdi-menu"></span>
       </button>
       <div class="search-field d-none d-xl-block">
@@ -16,31 +16,10 @@
             <input type="text" class="form-control bg-transparent border-0" placeholder="Search products">
           </div>
         </form>
-      </div>
+      </div> --}}
       <ul class="navbar-nav navbar-nav-right">
-        <li class="nav-item  dropdown d-none d-md-block">
-          <a class="nav-link dropdown-toggle" id="reportDropdown" href="#" data-toggle="dropdown" aria-expanded="false"> Reports </a>
-          <div class="dropdown-menu navbar-dropdown" aria-labelledby="reportDropdown">
-            <a class="dropdown-item" href="#">
-              <i class="mdi mdi-file-pdf mr-2"></i>PDF </a>
-            <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="#">
-              <i class="mdi mdi-file-excel mr-2"></i>Excel </a>
-            <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="#">
-              <i class="mdi mdi-file-word mr-2"></i>doc </a>
-          </div>
-        </li>
-        <li class="nav-item  dropdown d-none d-md-block">
-          <a class="nav-link dropdown-toggle" id="projectDropdown" href="#" data-toggle="dropdown" aria-expanded="false"> Projects </a>
-          <div class="dropdown-menu navbar-dropdown" aria-labelledby="projectDropdown">
-            <a class="dropdown-item" href="#">
-              <i class="mdi mdi-eye-outline mr-2"></i>View Project </a>
-            <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="#">
-              <i class="mdi mdi-pencil-outline mr-2"></i>Edit Project </a>
-          </div>
-        </li>
+      
+      
         <li class="nav-item nav-language dropdown d-none d-md-block">
           <a class="nav-link dropdown-toggle" id="languageDropdown" href="#" data-toggle="dropdown" aria-expanded="false">
             <div class="nav-language-icon">
@@ -73,15 +52,15 @@
         <li class="nav-item nav-profile dropdown">
           <a class="nav-link dropdown-toggle" id="profileDropdown" href="#" data-toggle="dropdown" aria-expanded="false">
             <div class="nav-profile-img">
-              <img src="assets/images/faces/face28.png" alt="image">
+              <img src="{{asset('uploads/users/'.auth()->user()->image)}}" alt="image">
             </div>
             <div class="nav-profile-text">
-              <p class="mb-1 text-black">Henry Klein</p>
+              <p class="mb-1 text-black">{{auth()->user()->name}}</p>
             </div>
           </a>
           <div class="dropdown-menu navbar-dropdown dropdown-menu-right p-0 border-0 font-size-sm" aria-labelledby="profileDropdown" data-x-placement="bottom-end">
             <div class="p-3 text-center bg-primary">
-              <img class="img-avatar img-avatar48 img-avatar-thumb" src="assets/images/faces/face28.png" alt="">
+              <img class="img-avatar img-avatar48 img-avatar-thumb" src="{{asset('uploads/users/'.auth()->user()->image)}}" alt="{{auth()->user()->name}}">
             </div>
             <div class="p-2">
               <h5 class="dropdown-header text-uppercase pl-2 text-dark">User Options</h5>
@@ -116,7 +95,7 @@
             </div>
           </div>
         </li>
-        <li class="nav-item dropdown">
+        {{-- <li class="nav-item dropdown">
           <a class="nav-link count-indicator dropdown-toggle" id="messageDropdown" href="#" data-toggle="dropdown" aria-expanded="false">
             <i class="mdi mdi-email-outline"></i>
             <span class="count-symbol bg-success"></span>
@@ -156,8 +135,8 @@
             <div class="dropdown-divider"></div>
             <h6 class="p-3 mb-0 text-center">4 new messages</h6>
           </div>
-        </li>
-        <li class="nav-item dropdown">
+        </li> --}}
+        {{-- <li class="nav-item dropdown">
           <a class="nav-link count-indicator dropdown-toggle" id="notificationDropdown" href="#" data-toggle="dropdown">
             <i class="mdi mdi-bell-outline"></i>
             <span class="count-symbol bg-danger"></span>
@@ -203,7 +182,7 @@
             <div class="dropdown-divider"></div>
             <h6 class="p-3 mb-0 text-center">See all notifications</h6>
           </div>
-        </li>
+        </li> --}}
       </ul>
       <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-toggle="offcanvas">
         <span class="mdi mdi-menu"></span>
