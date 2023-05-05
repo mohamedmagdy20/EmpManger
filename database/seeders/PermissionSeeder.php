@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Permission;
 use Illuminate\Database\Seeder;
 
 class PermissionSeeder extends Seeder
@@ -36,5 +37,10 @@ class PermissionSeeder extends Seeder
                 'description'=>'حذف مستخدم'
             ],
         ];
+
+        foreach($data as $d)
+        {
+            Permission::create($d);
+        }
     }
 }

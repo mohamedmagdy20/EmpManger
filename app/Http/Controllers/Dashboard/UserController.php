@@ -5,8 +5,10 @@ namespace App\Http\Controllers\Dashboard;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\GeneralController;
 use App\Http\Requests\User\StoreRequest;
+use App\Models\Role;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 use Yajra\DataTables\Facades\DataTables;
 
 class UserController extends GeneralController
@@ -45,7 +47,8 @@ class UserController extends GeneralController
 
 
     public function create(){
-        return view($this->viewPath($this->view.'create'));
+        $role = Role::all();
+        return view($this->viewPath($this->view.'create'),['data'=>$role]);
     }
 
     public function view()
@@ -56,7 +59,9 @@ class UserController extends GeneralController
     public function edit($id)
     {
         $data = $this->findData($id);
-        return view($this->viewPath($this->view.'edit'),['data'=>$data]);
+       $roles = Role::all();
+
+        return view($this->viewPath($this->view.'edit'),['data'=>$data,'roles'=>$roles]);
     }
 
     public function store(StoreRequest $request)
@@ -64,17 +69,51 @@ class UserController extends GeneralController
         $data = $request->validated();
 
         // Store Image 
-        $data['image'] = $this->storeImage($data['image'],config('path.USERS_PATH'));
+        if($request->file('image'))
+        {
+            $data['image'] = $this->storeImage($data['image'],config('path.USERS_PATH'));
+        }
 
+        // Hash Password 
+        $data['password'] = Hash::make($data['password']);
+        if($data['status'] == "on")
+        {
+            $data['status'] = true;
+        }else{
+            $data['status'] = false;
+        }
+
+        $user = $this->model->create($data);
+
+        $user->attachRole($data['role']);
         // Store in db 
 
-        if($this->model->create($data)){
-            return redirect()->back()->with('success','User Added');
-        }else{
-            return redirect()->back()->with('success','Error');
-        }
+        return redirect()->back()->with('success','User Added');
     }
 
+
+    public function update($id ,StoreRequest $request )
+    {
+        $data =  $request->validated();
+        if($data['status'] == "on")
+        {
+            $data['status'] = true;
+        }else{
+            $data['status'] = false;
+        }
+        $user = $this->findData($id);
+        if($request->file('image'))
+        {
+            $data['image'] =  $this->updateImage($data['image'],$user->image,config('path.USERS_PATH'));
+        }
+
+        $user->update($data);
+
+        $user->attachRole($data['role']);
+
+        return redirect()->route('dashboard.users.index')->with('success','User Updated');
+
+    }
 
     public function delete($id){
         
@@ -83,7 +122,7 @@ class UserController extends GeneralController
         // delete image if exsit
         if($data->image)
         {
-            unlink($data->image);
+            unlink(public_path('uploads/users/').$data->image);
         }
 
         if($data->delete($data)){
@@ -91,6 +130,29 @@ class UserController extends GeneralController
         };
     }
 
+
+    public function toggleActive(Request $request)
+    {
+        $status = $request->status; 
+        $user = User::findOrFail($request->id);
+        $user->status = $status ? false : true;
+
+        $user->save();
+
+        if($status)
+        {
+            return response()->json([
+                'msg'=>'User Deactive',
+                'hide'=>true
+            ]);
+        }else{
+            return response()->json([
+                'msg'=>'User Active',
+                'hide'=>false
+            ]);
+        }
+
+    }
 
 
 

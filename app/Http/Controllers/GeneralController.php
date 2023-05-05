@@ -34,7 +34,7 @@ class GeneralController extends Controller
 
     public function getData()
     {
-        return $this->model->orderBy('id','DESC');
+        return $this->model->orderBy('id','DESC')->get();
     }
 
     public function getQuery()
@@ -55,7 +55,7 @@ class GeneralController extends Controller
     {
         $imageName = time().'.'.$image->extension();  
         $path = $image->move(public_path($filePath), $imageName);
-        return $path;    
+        return $imageName;    
     }   
     
     
@@ -65,19 +65,18 @@ class GeneralController extends Controller
         if($oldImage)
         {
             // delete old image 
-            unlink($filePath);
-
-            // add new image //
-            if($newImage !=null)
-            {
-                $imageName = time().'.'.$newImage->extension();  
-                $path = $newImage->move(public_path($filePath), $imageName);
-                return $path;
-            }
-            return true;
-        }else{
-            return 'error';
+            unlink(config('path.USERS_PATH').'/'.$oldImage);   
         }
+
+           // add new image //
+
+        if($newImage !=null)
+        {
+            $imageName = time().'.'.$newImage->extension();  
+            $path = $newImage->move(public_path($filePath), $imageName);
+            return $imageName;
+        }
+        
     }
     
 }

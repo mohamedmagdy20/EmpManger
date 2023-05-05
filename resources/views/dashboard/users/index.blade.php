@@ -2,10 +2,30 @@
 
 @section('content')
 
+<div class="page-header">
+  <h3 class="page-title"> Users</h3>
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="{{route('dashboard')}}">Dashboard</a></li>
+      <li class="breadcrumb-item active"><a href="{{route('dashboard.users.index')}}">Users</a></li>
+   
+    </ol>
+  </nav>
+  
+</div>
 <div class="col-lg-12 grid-margin stretch-card">
     <div class="card">
       <div class="card-body">
-        <h4 class="card-title">Users</h4>
+        <div class="row justify-content-between align-items-center">
+          <div class="col-md-6">
+            <h4 class="card-title">Show Users</h4>
+          </div>
+          <div class="col-md-6">
+            <a href="{{route('dashboard.users.create')}}" class="btn btn-success">Add Users <i class="fa fa-plus" style="font-size: 15px;"></i></a>
+          </div>
+        </div>
+
+        
         <div class="table-responsive">
             <table class="table table-striped" id="user-table">
                 <thead>
@@ -114,6 +134,7 @@ function deleteConfirmation(id) {
             return false;
         })
     }
+
 
 </script>
 

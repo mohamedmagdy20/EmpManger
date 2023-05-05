@@ -36,10 +36,12 @@ class StoreRequest extends FormRequest
                 'nullable',
                 'min:6',
                 'max:191',
+                'confirmed',
                 Rule::requiredIf(function() {
                     return Request::routeIs('dashboard.users.store');
                 })
             ],
+            'role'=>'required',
             'image' => 'nullable|mimes:jpeg,jpg,png',
             'status'=>'required'
         ];

@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="{{asset('assets/vendors/flag-icon-css/css/flag-icon.min.css')}}">
     <link rel="stylesheet" href="{{asset('aassets/vendors/css/vendor.bundle.base.css')}}">
 
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
     <!-- endinject -->
     <!-- Plugin css for this page -->
     {{-- <link rel="stylesheet" href="assets/vendors/font-awesome/css/font-awesome.min.css" /> --}}
@@ -29,6 +30,23 @@
     <link rel="stylesheet" href="{{asset('assets/css/style.css')}}">
     <!-- End layout styles -->
     <link rel="shortcut icon" href="{{asset('assets/images/favicon.png')}}" />
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.0/css/toastr.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/viewerjs/1.11.3/viewer.min.css" integrity="sha512-zdX1vpRJc7+VHCUJcExqoI7yuYbSFAbSWxscAoLF0KoUPvMSAK09BaOZ47UFdP4ABSXpevKfcD0MTVxvh0jLHQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <style>
+      #img-preview {
+        display: none; 
+        width: 155px;   
+        border: 2px dashed #333;  
+        margin-bottom: 20px;
+      }
+      #img-preview img {  
+        width: 100%;
+        height: auto; 
+        display: block;   
+      }
+    </style>
     @yield('css')
   </head>
   <body>
@@ -259,7 +277,6 @@
                 <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center"> Free <a href="https://www.bootstrapdash.com/" target="_blank">Bootstrap dashboard templates</a> from Bootstrapdash.com</span>
               </div>
             </div>
-            <input type="text" value="4" id="x">
           </footer>
           <!-- partial -->
         </div>
@@ -288,8 +305,9 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" integrity="sha512-fD9DI5bZwQxOi7MhYWnnNPlvXdp/2Pj3XSTRrFs5FQa4mizyGLnJcN6tuvUS6LbmgN1ut+XGSABKvjN0H6Aoow==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.29.0/feather.min.js" integrity="sha512-24XP4a9KVoIinPFUbcnjIjAjtS59PUoxQj3GNVpWc86bCqPuy3YxAcxJrxFCxXe4GHtAumCbO2Ze2bddtuxaRw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
     {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.0/sweetalert.min.js"></script> --}}
-
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
     {{-- <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script> --}}
 
     <!-- endinject -->
@@ -298,5 +316,50 @@
     <!-- End custom js for this page -->
 
     @yield('js')
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.0/js/toastr.js"></script>
+    <script>
+      $(document).ready(function() {
+          toastr.options.timeOut = 10000;
+          @if (Session::has('error'))
+              toastr.error('{{ Session::get('error') }}');
+          @elseif(Session::has('success'))
+              toastr.success('{{ Session::get('success') }}');
+          @endif
+      });
+
+  </script>
+    <script>
+      const chooseFile = document.getElementById("choose-file");
+      const imgPreview = document.getElementById("img-preview");
+      chooseFile.addEventListener("change", function () {
+        getImgData();
+      });
+
+      function getImgData() {
+        const files = chooseFile.files[0];
+        if (files) {
+          const fileReader = new FileReader();
+          fileReader.readAsDataURL(files);
+          fileReader.addEventListener("load", function () {
+            imgPreview.style.display = "block";
+            imgPreview.innerHTML = '<img src="' + this.result + '" />';
+          });    
+        }
+      }
+    </script>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/viewerjs/1.11.1/viewer.min.js"></script>
+
+<script>
+  $(document).ready(function() {
+      const imageElements = document.querySelectorAll('.image-viewer');
+      imageElements.forEach((element) => {
+          new Viewer(element);
+      
+      });
+  });
+</script>
+
   </body>
 </html>

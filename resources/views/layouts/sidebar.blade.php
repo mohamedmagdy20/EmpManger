@@ -15,12 +15,13 @@
       <div class="collapse" id="ui-basic">
         <ul class="nav flex-column sub-menu">
           <li class="nav-item"> <a class="nav-link" href="{{route('dashboard.users.index')}}">Show Users</a></li>
-          <li class="nav-item"> <a class="nav-link" href="pages/ui-features/dropdowns.html">Dropdowns</a></li>
-          <li class="nav-item"> <a class="nav-link" href="pages/ui-features/typography.html">Typography</a></li>
+   
+          <li class="nav-item"> <a class="nav-link" href="{{route('dashboard.roles.index')}}">Roles</a></li>
+          
         </ul>
       </div>
     </li>
-    <li class="nav-item">
+    {{-- <li class="nav-item">
       <a class="nav-link" href="pages/icons/mdi.html">
         <span class="icon-bg"><i class="mdi mdi-contacts menu-icon"></i></span>
         <span class="menu-title">Icons</span>
@@ -97,7 +98,7 @@
         <a href="#" class="nav-link"><i class="mdi mdi-speedometer menu-icon"></i>
           <span class="menu-title">Take Tour</span></a>
       </div>
-    </li>
+    </li> --}}
     <li class="nav-item sidebar-user-actions">
       <div class="sidebar-user-menu">
         <form action="{{route('logout')}}" method="POST">
