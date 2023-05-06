@@ -5,8 +5,13 @@
     </div>
         @break
     @case('actions')
+    @if (auth()->user()->hasPermission('edit_users'))
         <a class="btn btn-sm btn-primary" href="{{route('dashboard.users.edit',$data->id)}}"><i class="fa fa-pen"></i></a>
-        <button class="btn btn-danger btn-flat btn-sm remove-user" data-id="{{ $data->id }}" data-action="{{ route('dashboard.users.delete',$data->id) }}" onclick="deleteConfirmation({{$data->id}})"><i class="fa fa-trash"></i></button>
+    @endif
+
+    @if (auth()->user()->hasPermission('delete_users'))
+        <button class="btn btn-danger btn-flat btn-sm remove-user" data-id="{{ $data->id }}" data-action="{{ route('dashboard.users.delete',$data->id) }}" onclick="deleteConfirmation({{$data->id}})"><i class="fa fa-trash"></i></button>    
+    @endif
       
 
 

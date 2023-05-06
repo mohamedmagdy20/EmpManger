@@ -20,10 +20,12 @@
           <div class="col-md-6">
             <h4 class="card-title">Show Users</h4>
           </div>
-          <div class="col-md-6">
-            <a href="{{route('dashboard.users.create')}}" class="btn btn-success">Add Users <i class="fa fa-plus" style="font-size: 15px;"></i></a>
-          </div>
-        </div>
+    @if (auth()->user()->hasPermission('add_users'))
+      <div class="col-md-6">
+        <a href="{{route('dashboard.users.create')}}" class="btn btn-success">Add Users <i class="fa fa-plus" style="font-size: 15px;"></i></a>
+      </div>
+    @endif
+           </div>
 
         
         <div class="table-responsive">

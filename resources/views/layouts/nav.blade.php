@@ -61,7 +61,7 @@
           <div class="dropdown-menu navbar-dropdown dropdown-menu-right p-0 border-0 font-size-sm" aria-labelledby="profileDropdown" data-x-placement="bottom-end">
             <div class="p-3 text-center bg-primary">
               <img class="img-avatar img-avatar48 img-avatar-thumb" src="{{asset('uploads/users/'.auth()->user()->image)}}" alt="{{auth()->user()->name}}">
-            </div>
+            </div> 
             <div class="p-2">
               <h5 class="dropdown-header text-uppercase pl-2 text-dark">User Options</h5>
               <a class="dropdown-item py-1 d-flex align-items-center justify-content-between" href="#">

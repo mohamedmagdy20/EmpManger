@@ -101,9 +101,12 @@
           <div class="col-md-6">
             <h4 class="card-title">Show Employees</h4>
           </div>
+          @if (auth()->user()->hasPermission('add_employees'))
           <div class="col-md-6">
             <a href="{{route('dashboard.employees.create')}}" class="btn btn-success">Add Employees <i class="fa fa-plus" style="font-size: 15px;"></i></a>
           </div>
+          @endif
+        
         </div>
 
         

@@ -5,8 +5,12 @@
     </div>
         @break
     @case('actions')
+    @if (auth()->user()->hasPermission('edit_employees'))
         <a class="btn btn-sm btn-primary" href="{{route('dashboard.employees.edit',$data->id)}}"><i class="fa fa-pen"></i></a>
-        <button class="btn btn-danger btn-flat btn-sm remove-user" data-id="{{ $data->id }}" data-action="{{ route('dashboard.users.delete',$data->id) }}" onclick="deleteConfirmation({{$data->id}})"><i class="fa fa-trash"></i></button>
+    @endif
+    @if (auth()->user()->hasPermission('delete_employees'))
+         <button class="btn btn-danger btn-flat btn-sm remove-user" data-id="{{ $data->id }}" data-action="{{ route('dashboard.users.delete',$data->id) }}" onclick="deleteConfirmation({{$data->id}})"><i class="fa fa-trash"></i></button>
+    @endif
       
 
 

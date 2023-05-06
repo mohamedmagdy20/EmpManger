@@ -20,9 +20,11 @@
             <div class="col-md-6">
               <h4 class="card-title">Show Jobs</h4>
             </div>
-            <div class="col-md-6">
-              <a href="{{route('dashboard.jobs.create')}}" class="btn btn-success">Add Jobs <i class="fa fa-plus" style="font-size: 15px;"></i></a>
-            </div>
+            @if (auth()->user()->hasPermission('add_jobs'))
+              <div class="col-md-6">
+                <a href="{{route('dashboard.jobs.create')}}" class="btn btn-success">Add Jobs <i class="fa fa-plus" style="font-size: 15px;"></i></a>
+              </div>                
+            @endif
           </div>
   
           

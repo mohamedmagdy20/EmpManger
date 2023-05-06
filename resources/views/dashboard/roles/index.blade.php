@@ -20,9 +20,12 @@
             <div class="col-md-6">
               <h4 class="card-title">Show Roles</h4>
             </div>
+            @if (auth()->user()->hasPermission('add_role'))
             <div class="col-md-6">
               <a href="{{route('dashboard.roles.create')}}" class="btn btn-success">Add Roles <i class="fa fa-plus" style="font-size: 15px;"></i></a>
             </div>
+            @endif
+         
           </div>
   
           

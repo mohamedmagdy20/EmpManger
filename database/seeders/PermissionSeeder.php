@@ -52,7 +52,16 @@ class PermissionSeeder extends Seeder
                 'display_name'=>'Edit Role',
                 'description'=>'تعديل الادوار'
             ],
-
+            [
+                'name'=>'show_permissions',
+                'display_name'=>'Show Permissions',
+                'description'=>'عرض الصلاحيات'
+            ],
+            [
+                'name'=>'edit_permissions',
+                'display_name'=>'Edit Permissions',
+                'description'=>'تعديل الصلاحيات'
+            ],
 
             
             [
@@ -90,6 +99,32 @@ class PermissionSeeder extends Seeder
                 'display_name'=>'Filter Employees',
                 'description'=>'تعديل موظف'
             ],
+
+            [
+                'name'=>'show_jobs',
+                'display_name'=>'Show Jobs',
+                'description'=>'عرض الوظائف'
+            ],
+
+            [
+                'name'=>'add_jobs',
+                'display_name'=>'Add Jobs',
+                'description'=>'اضافه الوظائف'
+            ],
+
+
+            [
+                'name'=>'edit_jobs',
+                'display_name'=>'Edit Jobs',
+                'description'=>'تعديل الوظائف'
+            ],
+            
+            [
+                'name'=>'delete_jobs',
+                'display_name'=>'Delete Jobs',
+                'description'=>'حذف الوظائف'
+            ],
+
 
         ];
 
