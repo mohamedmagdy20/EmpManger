@@ -18,9 +18,6 @@
           <div class="card-body">
             <div class="row justify-content-around">
                 <h4 class="card-title">{{$data->employee->name}} Requests</h4>
-                {{-- <div class="col-md-6">
-                    <h4>Type: {{$data->type}}</h4>
-                </div> --}}
             </div>
             <div>{!! $data->description !!}</div>
 

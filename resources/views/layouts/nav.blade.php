@@ -65,33 +65,22 @@
             <div class="p-2">
               <h5 class="dropdown-header text-uppercase pl-2 text-dark">User Options</h5>
               <a class="dropdown-item py-1 d-flex align-items-center justify-content-between" href="#">
-                <span>Inbox</span>
-                <span class="p-0">
-                  <span class="badge badge-primary">3</span>
-                  <i class="mdi mdi-email-open-outline ml-1"></i>
-                </span>
-              </a>
-              <a class="dropdown-item py-1 d-flex align-items-center justify-content-between" href="#">
                 <span>Profile</span>
                 <span class="p-0">
-                  <span class="badge badge-success">1</span>
+                  {{-- <span class="badge badge-success">1</span> --}}
                   <i class="mdi mdi-account-outline ml-1"></i>
                 </span>
               </a>
-              <a class="dropdown-item py-1 d-flex align-items-center justify-content-between" href="javascript:void(0)">
-                <span>Settings</span>
-                <i class="mdi mdi-settings"></i>
-              </a>
+             
               <div role="separator" class="dropdown-divider"></div>
-              <h5 class="dropdown-header text-uppercase  pl-2 text-dark mt-2">Actions</h5>
-              <a class="dropdown-item py-1 d-flex align-items-center justify-content-between" href="#">
-                <span>Lock Account</span>
-                <i class="mdi mdi-lock ml-1"></i>
-              </a>
-              <a class="dropdown-item py-1 d-flex align-items-center justify-content-between" href="#">
-                <span>Log Out</span>
-                <i class="mdi mdi-logout ml-1"></i>
-              </a>
+              <form action="{{route('logout')}}" method="POST" class="d-inline">
+                @csrf
+                <button class="dropdown-item py-1 d-flex align-items-center justify-content-between" href="#">
+                  <span>Log Out</span>
+                  <i class="mdi mdi-logout ml-1"></i>
+                </button>
+              </form>
+             
             </div>
           </div>
         </li>

@@ -55,6 +55,17 @@
       </a>
     </li>
     @endif
+
+
+    
+    @if (auth()->user()->hasPermission('show_login_history'))
+    <li class="nav-item">
+      <a class="nav-link" href="{{route('dashboard.login_history.index')}}">
+        <span class="icon-bg"><i class="fa-solid fa-server"></i></span>
+        <span class="menu-title">Login History</span>
+      </a>
+    </li>
+    @endif
   
     {{-- <li class="nav-item">
       <a class="nav-link" href="pages/icons/mdi.html">

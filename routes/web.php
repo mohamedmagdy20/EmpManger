@@ -3,6 +3,7 @@
 use App\Http\Controllers\Dashboard\EmployeeController;
 use App\Http\Controllers\Dashboard\HomeController;
 use App\Http\Controllers\Dashboard\JobController;
+use App\Http\Controllers\Dashboard\LoginHistoryController;
 use App\Http\Controllers\Dashboard\PermissionController;
 use App\Http\Controllers\Dashboard\RequestController;
 use App\Http\Controllers\Dashboard\RoleController;
@@ -96,6 +97,14 @@ Route::group(['middleware' => 'auth','prefix' => 'requests'], function (){
     Route::post('store',[RequestController::class,'store'])->middleware('permission:add_requests')->name($route.'store');
     Route::post('update/{id}',[RequestController::class,'update'])->middleware('permission:edit_requests')->name($route.'update');
     Route::get('change-status',[RequestController::class,'updateStatus'])->middleware('permission:edit_requests')->name($route.'change-status');
+});
+
+
+
+Route::group(['middleware' => 'auth','prefix' => 'login-history'], function (){
+    $route = 'dashboard.login_history.';
+    Route::get('index',[LoginHistoryController::class,'index'])->middleware('permission:show_login_history')->name($route.'index');
+    Route::get('data',[LoginHistoryController::class,'data'])->middleware('permission:show_login_history')->name($route.'data');
 });
 
 
