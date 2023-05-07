@@ -120,6 +120,8 @@ class EmployeeController extends GeneralController
         if($request->file('image'))
         {
             $data['image'] = $this->storeImage($data['image'],config('path.EMPLOYEE_PATH'));
+            $data['image_link'] = asset('uploads/employees/'.$data['image']);
+
         }
 
         $data['password'] = Hash::make($data['password']);
@@ -131,7 +133,7 @@ class EmployeeController extends GeneralController
             $data['status'] = false;
         }
 
-        $this->model->create(array_merge($data,['image_link'=>asset('uploads/employees/'.$data['image']),'created_by'=>auth()->user()->name]));
+        $this->model->create(array_merge($data,['created_by'=>auth()->user()->name]));
         return redirect()->back()->with('success','Employee Added');
     }
 
@@ -145,6 +147,7 @@ class EmployeeController extends GeneralController
         if($request->file('image'))
         {
             $data['image'] = $this->updateImage($data['image'],$emp->image,config('path.EMPLOYEE_PATH'));
+            $data['image_link'] = asset('uploads/employees/'.$data['image']);
         }
 
 
@@ -155,7 +158,7 @@ class EmployeeController extends GeneralController
             $data['status'] = false;
         }
 
-        $emp->update(array_merge($data,['image_link'=>asset('uploads/employees/'.$data['image']),'created_by'=>auth()->user()->name]));
+        $emp->update(array_merge($data,['created_by'=>auth()->user()->name]));
 
         return redirect()->route('dashboard.employees.index')->with('success','Employee updated');
     }

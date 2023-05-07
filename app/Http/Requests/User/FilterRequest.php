@@ -26,7 +26,10 @@ class FilterRequest extends FormRequest
     {
         return [
             //
-            'status'=>'nullable'
+            'status'=>'nullable',
+            'request_status'=>'nullable',
+            'type'=>'nullable',
+            'employee_id'=>'nullable'
         ];
     }
 }

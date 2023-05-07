@@ -45,7 +45,8 @@ class StoreEmployee extends FormRequest
                  Rule::unique('employees', 'national_id')->ignore($this->route('id'))
             ],
             'gender'=>'required',
-            'salary'=>'required'
+            'salary'=>'required',
+            'image_link'=>'nullable'
         ];
     }
 }

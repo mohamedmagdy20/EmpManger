@@ -13,9 +13,17 @@ class Request extends Model
 
     protected $fillable = [
         'type',
+        'employee_id',
         'status',
         'description',
         'request_status',
-        'created_by'
+        'created_by',
+        'created_at'
     ];
+
+    public function employee()
+    {
+        return $this->belongsTo(Employee::class,'employee_id');
+    }
+    
 }

@@ -126,6 +126,33 @@ class PermissionSeeder extends Seeder
             ],
 
 
+
+            [
+                'name'=>'show_requests',
+                'display_name'=>'Show Requests',
+                'description'=>'عرض الطلبات'
+            ],
+
+            [
+                'name'=>'add_requests',
+                'display_name'=>'Add Requests',
+                'description'=>'اضافه الطلبات'
+            ],
+
+
+            [
+                'name'=>'edit_requests',
+                'display_name'=>'Edit Requests',
+                'description'=>'تعديل الطلبات'
+            ],
+            
+            [
+                'name'=>'delete_requests',
+                'display_name'=>'Delete Requests',
+                'description'=>'حذف الطلبات'
+            ],
+
+
         ];
 
         foreach($data as $d)

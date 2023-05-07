@@ -27,7 +27,7 @@ class StoreRequests extends FormRequest
             'employee_id'=>'required',
             'description'=>'nullable',
             'type'=>'required',
-            'status'=>'required',
+            'status'=>'nullable',
         ];
     }
 }

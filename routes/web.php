@@ -4,6 +4,7 @@ use App\Http\Controllers\Dashboard\EmployeeController;
 use App\Http\Controllers\Dashboard\HomeController;
 use App\Http\Controllers\Dashboard\JobController;
 use App\Http\Controllers\Dashboard\PermissionController;
+use App\Http\Controllers\Dashboard\RequestController;
 use App\Http\Controllers\Dashboard\RoleController;
 use App\Http\Controllers\Dashboard\UserController;
 use App\Models\Permission;
@@ -80,6 +81,21 @@ Route::group(['middleware' => 'auth','prefix' => 'employees'], function (){
     Route::post('update/{id}',[EmployeeController::class,'update'])->middleware('permission:edit_employees')->name($route.'update');
     Route::post('change-password/{id}',[EmployeeController::class,'changePassword'])->middleware('permission:edit_employees')->name($route.'change-password');
 
+});
+
+
+Route::group(['middleware' => 'auth','prefix' => 'requests'], function (){
+    $route = 'dashboard.requests.';
+    
+    Route::get('index',[RequestController::class,'index'])->middleware('permission:show_requests')->name($route.'index');
+    Route::get('data',[RequestController::class,'data'])->middleware('permission:show_requests')->name($route.'data');
+    Route::get('create',[RequestController::class,'create'])->middleware('permission:add_requests')->name($route.'create');
+    Route::get('edit/{id}',[RequestController::class,'edit'])->middleware('permission:edit_requests')->name($route.'edit');
+    Route::get('show/{id}',[RequestController::class,'show'])->middleware('permission:show_requests')->name($route.'show');
+    Route::get('delete/{id}',[RequestController::class,'delete'])->middleware('permission:delete_requests')->name($route.'delete');
+    Route::post('store',[RequestController::class,'store'])->middleware('permission:add_requests')->name($route.'store');
+    Route::post('update/{id}',[RequestController::class,'update'])->middleware('permission:edit_requests')->name($route.'update');
+    Route::get('change-status',[RequestController::class,'updateStatus'])->middleware('permission:edit_requests')->name($route.'change-status');
 });
 
 

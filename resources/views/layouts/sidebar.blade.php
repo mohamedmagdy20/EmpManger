@@ -46,6 +46,16 @@
     </li>
     @endif
   
+
+    @if (auth()->user()->hasPermission('show_requests'))
+    <li class="nav-item">
+      <a class="nav-link" href="{{route('dashboard.requests.index')}}">
+        <span class="icon-bg"><i class="fa-solid fa-code-pull-request"></i></span>
+        <span class="menu-title">Requests</span>
+      </a>
+    </li>
+    @endif
+  
     {{-- <li class="nav-item">
       <a class="nav-link" href="pages/icons/mdi.html">
         <span class="icon-bg"><i class="mdi mdi-contacts menu-icon"></i></span>
