@@ -14,27 +14,26 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/',[HomeController::class,'index'])->middleware(['auth'])->name('dashboard');
 
+$mainPrefix = 'dashboard/';
 
 
-
-Route::group(['middleware' => 'auth','prefix' => 'users'], function (){
+Route::group(['middleware' => 'auth','prefix' => $mainPrefix.'users'], function (){
     $route = 'dashboard.users.';
     
     Route::get('index',[UserController::class,'index'])->middleware('permission:show_user')->name($route.'index');
     Route::get('data',[UserController::class,'data'])->middleware('permission:show_user')->name($route.'data');
     Route::get('create',[UserController::class,'create'])->middleware('permission:add_user')->name($route.'create');
     Route::get('edit/{id}',[UserController::class,'edit'])->middleware('permission:edit_user')->name($route.'edit');
-
     Route::get('delete/{id}',[UserController::class,'delete'])->middleware('permission:delete_user')->name($route.'delete');
     Route::post('store',[UserController::class,'store'])->middleware('permission:add_user')->name($route.'store');
-    Route::post('update/{id}',[UserController::class,'update'])->middleware('permission:update_user')->name($route.'update');
+    Route::post('update/{id}',[UserController::class,'update'])->middleware('permission:edit_user')->name($route.'update');
     // Route::post('toggle-active',[UserController::class,'toggleActive'])->middleware('permission:show_user')->name($route.'toggle-active');
 
 });
 
 
 
-Route::group(['middleware' => 'auth','prefix' => 'roles'], function (){
+Route::group(['middleware' => 'auth','prefix' =>  $mainPrefix.'roles'], function (){
     $route = 'dashboard.roles.';
     
     Route::get('index',[RoleController::class,'index'])->middleware('permission:show_role')->name($route.'index');
@@ -46,7 +45,7 @@ Route::group(['middleware' => 'auth','prefix' => 'roles'], function (){
 
 });
 
-Route::group(['middleware' => 'auth','prefix' => 'permissions'], function (){
+Route::group(['middleware' => 'auth','prefix' =>  $mainPrefix.'permissions'], function (){
     $route = 'dashboard.permissions.';
     Route::get('edit/{id}',[PermissionController::class,'index'])->middleware('permission:show_permissions')->name($route.'edit');
     Route::post('update/{id}',[PermissionController::class,'updatePermission'])->middleware('permission:edit_permissions')->name($route.'update');
@@ -54,10 +53,10 @@ Route::group(['middleware' => 'auth','prefix' => 'permissions'], function (){
 
 
 
-Route::group(['middleware' => 'auth','prefix' => 'jobs'], function (){
+Route::group(['middleware' => 'auth','prefix' =>  $mainPrefix.'jobs'], function (){
     $route = 'dashboard.jobs.';
     
-    Route::get('index',[JobController::class,'index'])->middleware('permission:show_jobs')->name($route.'index');
+    Route::get('/',[JobController::class,'index'])->middleware('permission:show_jobs')->name($route.'index');
     Route::get('data',[JobController::class,'data'])->middleware('permission:show_jobs')->name($route.'data');
     Route::get('create',[JobController::class,'create'])->middleware('permission:add_jobs')->name($route.'create');
     Route::get('edit/{id}',[JobController::class,'edit'])->middleware('permission:edit_jobs')->name($route.'edit');
@@ -69,10 +68,10 @@ Route::group(['middleware' => 'auth','prefix' => 'jobs'], function (){
 });
 
 
-Route::group(['middleware' => 'auth','prefix' => 'employees'], function (){
+Route::group(['middleware' => 'auth','prefix' =>  $mainPrefix.'employees'], function (){
     $route = 'dashboard.employees.';
     
-    Route::get('index',[EmployeeController::class,'index'])->middleware('permission:show_employees')->name($route.'index');
+    Route::get('/',[EmployeeController::class,'index'])->middleware('permission:show_employees')->name($route.'index');
     Route::get('data',[EmployeeController::class,'data'])->middleware('permission:show_employees')->name($route.'data');
     Route::get('create',[EmployeeController::class,'create'])->middleware('permission:add_employees')->name($route.'create');
     Route::get('edit/{id}',[EmployeeController::class,'edit'])->middleware('permission:edit_employees')->name($route.'edit');
@@ -85,10 +84,10 @@ Route::group(['middleware' => 'auth','prefix' => 'employees'], function (){
 });
 
 
-Route::group(['middleware' => 'auth','prefix' => 'requests'], function (){
+Route::group(['middleware' => 'auth','prefix' =>  $mainPrefix.'requests'], function (){
     $route = 'dashboard.requests.';
     
-    Route::get('index',[RequestController::class,'index'])->middleware('permission:show_requests')->name($route.'index');
+    Route::get('/',[RequestController::class,'index'])->middleware('permission:show_requests')->name($route.'index');
     Route::get('data',[RequestController::class,'data'])->middleware('permission:show_requests')->name($route.'data');
     Route::get('create',[RequestController::class,'create'])->middleware('permission:add_requests')->name($route.'create');
     Route::get('edit/{id}',[RequestController::class,'edit'])->middleware('permission:edit_requests')->name($route.'edit');
@@ -101,9 +100,9 @@ Route::group(['middleware' => 'auth','prefix' => 'requests'], function (){
 
 
 
-Route::group(['middleware' => 'auth','prefix' => 'login-history'], function (){
+Route::group(['middleware' => 'auth','prefix' =>  $mainPrefix.'login-history'], function (){
     $route = 'dashboard.login_history.';
-    Route::get('index',[LoginHistoryController::class,'index'])->middleware('permission:show_login_history')->name($route.'index');
+    Route::get('/',[LoginHistoryController::class,'index'])->middleware('permission:show_login_history')->name($route.'index');
     Route::get('data',[LoginHistoryController::class,'data'])->middleware('permission:show_login_history')->name($route.'data');
 });
 
