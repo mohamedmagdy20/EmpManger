@@ -115,6 +115,7 @@
                 <thead>
                   <tr>
                     <th> Image </th>
+                    <th> Link </th>
                     <th> Name </th>
                     <th> Email </th>
                     <th> Phone </th>
@@ -124,6 +125,8 @@
                     <th> Job </th>
                     <th> Salary </th>
                     <th> Status </th>
+                    <th> Created By </th>
+
                     <th> Actions </th>
                   </tr>
                 </thead>
@@ -164,11 +167,31 @@ function setEmployeeDatatable() {
                 "next": "<i class='mdi mdi-chevron-right'>"
             },
         },
-
+        buttons: [
+           {
+                        extend: 'copy',
+                        className: 'btn btn-light'
+                    },
+                    {
+                        extend: 'print',
+                        className: 'btn btn-light'
+                    },
+                    {
+                        extend: 'pdf',
+                        className: 'btn btn-light'
+                    },
+                    {
+                        extend: 'csv',
+                        className: 'btn btn-light'
+                    },
+        ],
         
         columns: [
             {
                 data:'images'
+            },
+            {
+                data:'image_link'
             },
             {
                 data:'name'
@@ -198,9 +221,14 @@ function setEmployeeDatatable() {
                 data:'status'
             },
             {
+                data:'created_by'
+            },
+            {
                 data:'actions'
             }
         ],
+       
+  
     });
 }
 
@@ -227,9 +255,12 @@ function deleteConfirmation(id) {
                     data: {_token: CSRF_TOKEN},
                     dataType: 'JSON',
                     success: function (results) {
-
+                        if(results.status == true)
+                        {
                             swal("Done!", results.message, "success");
                             EmployeeTable.ajax.reload()
+                        }
+
                 
                     },
                 });

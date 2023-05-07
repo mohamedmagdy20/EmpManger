@@ -83,7 +83,7 @@ class UserController extends GeneralController
             $data['status'] = false;
         }
 
-        $user = $this->model->create($data);
+        $user = $this->model->create(array_merge($data,['created_by'=>auth()->user()->name]));
 
         $user->attachRole($data['role']);
         // Store in db 
@@ -109,7 +109,7 @@ class UserController extends GeneralController
 
         $data['password'] = Hash::make($data['password']);
 
-        $user->update($data);
+        $user->update(array_merge($data,['created_by'=>auth()->user()->name]));
 
         $user->attachRole($data['role']);
 
@@ -128,7 +128,9 @@ class UserController extends GeneralController
         }
 
         if($data->delete($data)){
-            return redirect()->back()->with('success','Deleted');
+            // return redirect()->back()->with('success','Deleted');
+            return response()->json(['status'=>true]);
+
         };
     }
 

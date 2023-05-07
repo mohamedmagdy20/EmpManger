@@ -14,7 +14,11 @@
       
 
 
-        @break
+    @break
+
+    @case('image_link')
+        <a href="{{$data->image_link}}" target="_blank"><i class="fa-solid fa-link"></i></a>
+    @break
     @case('status')
         @if ($data->status == false)
             <span class="btn btn-sm btn-warning">Deactive</span>

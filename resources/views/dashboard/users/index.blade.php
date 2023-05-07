@@ -20,7 +20,7 @@
           <div class="col-md-6">
             <h4 class="card-title">Show Users</h4>
           </div>
-    @if (auth()->user()->hasPermission('add_users'))
+    @if (auth()->user()->hasPermission('add_user'))
       <div class="col-md-6">
         <a href="{{route('dashboard.users.create')}}" class="btn btn-success">Add Users <i class="fa fa-plus" style="font-size: 15px;"></i></a>
       </div>
@@ -36,6 +36,7 @@
                     <th> Name </th>
                     <th> Email </th>
                     <th> Status </th>
+                    <th> Created By </th>
                     <th> Actions </th>
                   </tr>
                 </thead>
@@ -92,6 +93,9 @@ function setUserDatatable() {
                 data: 'status'
             },
             {
+              data:'created_by'
+            },
+            {
                 data: 'actions'
             }
         ],
@@ -122,9 +126,13 @@ function deleteConfirmation(id) {
                     dataType: 'JSON',
                     success: function (results) {
 
-                            swal("Done!", results.message, "success");
-                            UsersTable.ajax.reload()
-                
+                           
+                            if(results.status == true)
+                            {
+                                swal("Done!", results.message, "success");
+                                UsersTable.ajax.reload()
+                           
+                              }
                     },
                 });
 

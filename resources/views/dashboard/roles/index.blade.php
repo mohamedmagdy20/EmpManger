@@ -35,6 +35,7 @@
                     <tr>
                       <th> Name </th>
                       <th> Description</th>
+                      <th>Created By</th>
                       <th> Actions </th>
                     </tr>
                   </thead>
@@ -85,6 +86,9 @@ function setRolesDatatable() {
             },
             {
                 data: 'description'
+            },
+            {
+              data:'created_by'
             },
             {
                 data: 'actions'

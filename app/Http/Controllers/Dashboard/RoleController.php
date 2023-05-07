@@ -58,7 +58,7 @@ class RoleController extends GeneralController
             $data = $request->validated();
             $data['name'] = strtolower(trim($data['display_name']));
     
-            $this->model->create($data);
+            $this->model->create(array_merge($data,['created_by'=>auth()->user()->name]));
     
             return redirect()->back()->with('success','Role Added');
     
@@ -73,7 +73,7 @@ class RoleController extends GeneralController
         $data = $request->validated();
         $role = $this->findData($id);
         $role->update(['display_name'=>$data['display_name'],
-    'description'=>$data['description']]);
+    'description'=>$data['description'],'created_by'=>auth()->user()->name]);
         return redirect()->route('dashboard.roles.index')->with('success','Role Updated');
 
     }

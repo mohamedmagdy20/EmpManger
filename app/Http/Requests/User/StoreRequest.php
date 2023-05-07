@@ -43,7 +43,7 @@ class StoreRequest extends FormRequest
             ],
             'role'=>'required',
             'image' => 'nullable|mimes:jpeg,jpg,png',
-            'status'=>'required'
+            'status'=>'required',
         ];
     }
 }

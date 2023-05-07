@@ -59,7 +59,7 @@ class JobController extends GeneralController
     public function store(StoreJobs $request)
     {
         $data = $request->validated();
-        $this->model->create($data);
+        $this->model->create(array_merge($data,['created_by'=>auth()->user()->name]));
         return redirect()->back()->with('success','Job Added');
     }
 
@@ -68,7 +68,7 @@ class JobController extends GeneralController
     {
         $data =  $request->validated();
         $job = $this->findData($id);
-        $job->update($data);
+        $job->update(array_merge($data,['created_by'=>auth()->user()->name]));
         return redirect()->route('dashboard.jobs.index')->with('success','Job Updated');
     }
 }

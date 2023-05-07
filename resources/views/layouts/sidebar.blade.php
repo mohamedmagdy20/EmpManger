@@ -1,4 +1,4 @@
-<ul class="nav">
+<ul class="nav" style="position: fixed">
     <li class="nav-item nav-category">Main</li>
     <li class="nav-item">
       <a class="nav-link" href="{{route('dashboard')}}">

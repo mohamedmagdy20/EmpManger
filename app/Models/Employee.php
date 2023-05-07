@@ -20,6 +20,7 @@ class Employee extends Model
         'status',
         'national_id',
         'gender',
+        'image_link',
         'salary'
     ];
 

@@ -59,6 +59,10 @@ class EmployeeController extends GeneralController
         ->editColumn('job_id',function($data){
             return $data->job->name;
         })
+        ->editColumn('image_link',function($data){
+            return view($this->viewPath($this->view.'actions'),['data'=>$data,'type'=>'image_link']);
+
+        })
         ->addColumn('images',function($data)
         {
             return view($this->viewPath($this->view.'actions'),['data'=>$data,'type'=>'images']);
@@ -127,7 +131,7 @@ class EmployeeController extends GeneralController
             $data['status'] = false;
         }
 
-        $this->model->create($data);
+        $this->model->create(array_merge($data,['image_link'=>asset('uploads/employees/'.$data['image']),'created_by'=>auth()->user()->name]));
         return redirect()->back()->with('success','Employee Added');
     }
 
@@ -151,7 +155,7 @@ class EmployeeController extends GeneralController
             $data['status'] = false;
         }
 
-        $emp->update($data);
+        $emp->update(array_merge($data,['image_link'=>asset('uploads/employees/'.$data['image']),'created_by'=>auth()->user()->name]));
 
         return redirect()->route('dashboard.employees.index')->with('success','Employee updated');
     }
