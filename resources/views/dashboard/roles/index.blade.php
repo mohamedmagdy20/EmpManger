@@ -3,11 +3,11 @@
 
 
 <div class="page-header">
-    <h3 class="page-title"> Roles</h3>
+    <h3 class="page-title"> @lang('lang.role')</h3>
     <nav aria-label="breadcrumb">
       <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="{{route('dashboard')}}">Dashboard</a></li>
-        <li class="breadcrumb-item active"><a href="{{route('dashboard.roles.index')}}">Roles</a></li>
+        <li class="breadcrumb-item"><a href="{{route('dashboard')}}">@lang('lang.dashboard')</a></li>
+        <li class="breadcrumb-item active"><a href="{{route('dashboard.roles.index')}}">@lang('lang.role')</a></li>
      
       </ol>
     </nav>
@@ -18,11 +18,11 @@
         <div class="card-body">
           <div class="row justify-content-between align-items-center">
             <div class="col-md-6">
-              <h4 class="card-title">Show Roles</h4>
+              <h4 class="card-title">@lang('lang.show') @lang('lang.role')</h4>
             </div>
             @if (auth()->user()->hasPermission('add_role'))
             <div class="col-md-6">
-              <a href="{{route('dashboard.roles.create')}}" class="btn btn-success">Add Roles <i class="fa fa-plus" style="font-size: 15px;"></i></a>
+              <a href="{{route('dashboard.roles.create')}}" class="btn btn-success">@lang('lang.create') @lang('lang.role') <i class="fa fa-plus" style="font-size: 15px;"></i></a>
             </div>
             @endif
          
@@ -33,10 +33,10 @@
               <table class="table table-striped" id="role-table">
                   <thead>
                     <tr>
-                      <th> Name </th>
-                      <th> Description</th>
-                      <th>Created By</th>
-                      <th> Actions </th>
+                      <th> @lang('lang.name') </th>
+                      <th> @lang('lang.description')</th>
+                      <th>@lang('lang.created_by')</th>
+                      <th> @lang('lang.actions') </th>
                     </tr>
                   </thead>
                   <tbody>

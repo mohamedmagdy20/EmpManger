@@ -8,14 +8,14 @@ use App\Http\Controllers\Dashboard\PermissionController;
 use App\Http\Controllers\Dashboard\RequestController;
 use App\Http\Controllers\Dashboard\RoleController;
 use App\Http\Controllers\Dashboard\UserController;
-use App\Models\Permission;
+use App\Http\Controllers\LocalizationController;
 use Illuminate\Support\Facades\Route;
 
 
 Route::get('/',[HomeController::class,'index'])->middleware(['auth'])->name('dashboard');
 
+Route::get('change-lang/{locale}',[LocalizationController::class,'setLang'])->name('change-lang');
 $mainPrefix = 'dashboard/';
-
 
 Route::group(['middleware' => 'auth','prefix' => $mainPrefix.'users'], function (){
     $route = 'dashboard.users.';

@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en" dir="">
+<html lang="en" dir="{{(App::isLocale('ar') ? 'rtl' : 'ltr')}}">
   <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Emp Mangment</title>
+    <title>Employee Managment</title>
     <!-- plugins:css -->
     <link rel="stylesheet" href="{{asset('assets/vendors/mdi/css/materialdesignicons.min.css')}}">
     <link rel="stylesheet" href="{{asset('assets/vendors/flag-icon-css/css/flag-icon.min.css')}}">

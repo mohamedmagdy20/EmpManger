@@ -3,11 +3,11 @@
 @section('content')
 
 <div class="page-header">
-  <h3 class="page-title"> Employees</h3>
+  <h3 class="page-title"> @lang('lang.employees')</h3>
   <nav aria-label="breadcrumb">
     <ol class="breadcrumb">
-      <li class="breadcrumb-item"><a href="{{route('dashboard')}}">Dashboard</a></li>
-      <li class="breadcrumb-item active"><a href="{{route('dashboard.users.index')}}">Employees</a></li>
+      <li class="breadcrumb-item"><a href="{{route('dashboard')}}">@lang('lang.dashboard')</a></li>
+      <li class="breadcrumb-item active"><a href="{{route('dashboard.users.index')}}">@lang('lang.employees')</a></li>
    
     </ol>
   </nav>
@@ -21,10 +21,10 @@
     <div class="row justify-content-between align-items-center">
         <div class="col-md-4">
             <div class="form-group">
-                <label for="gender">Gender</label>
+                <label for="gender">@lang('lang.gender')</label>
                 <select name="gender" class="form-select" id="gender">
-                    <option value="{{old('gender','male')}}">Male</option>
-                    <option value="{{old('gender','female')}}">Female</option>
+                    <option value="{{old('gender','male')}}">@lang('lang.male')</option>
+                    <option value="{{old('gender','female')}}">@lang('lang.female')</option>
                 </select>
             </div>
           
@@ -32,10 +32,10 @@
 
         <div class="col-md-4">
             <div class="form-group">
-                <label for="status">Status</label>
+                <label for="status">@lang('lang.status')</label>
                 <select name="status" class="form-select" id="status">
-                    <option value="{{old('status','1')}}">Active</option>
-                    <option value="{{old('status','0')}}">Deactive</option>
+                    <option value="{{old('status','1')}}">@lang('lang.active')</option>
+                    <option value="{{old('status','0')}}">@lang('lang.deactive')</option>
                 </select>
             </div>
           
@@ -44,7 +44,7 @@
         
         <div class="col-md-4">
             <div class="form-group">
-                <label for="job_id">Job</label>
+                <label for="job_id">@lang('lang.job')</label>
                 <select name="job_id" class="form-select" id="job_id">
                     @foreach ($jobs as $job )
                         <option value="{{old('job_id',$job->id)}}">{{$job->name}}</option>
@@ -59,13 +59,13 @@
             <div class="row">
                 <div class="col-md-6">
                     <div class="form-group">
-                        <label for="salary_from">Salary From</label>
+                        <label for="salary_from">@lang('lang.salary_from')</label>
                         <input type="number" name="salary_from" class="form-control" id="salary_from">
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="form-group">
-                        <label for="salary_from">Salary To</label>
+                        <label for="salary_from">@lang('lang.salary_to')</label>
                         <input type="number" name="salary_to" class="form-control" id="salary_to">
                     </div>
                 </div>
@@ -75,10 +75,10 @@
         <div class="col-md-6 mt-4">
             <div class="d-flex">
                 <div class="form-group ">
-                    <button class="btn btn-primary" onclick="handleFilter()">Search <i class="fa-solid fa-magnifying-glass"></i></button>
+                    <button class="btn btn-primary" onclick="handleFilter()">@lang('lang.search') <i class="fa-solid fa-magnifying-glass"></i></button>
                 </div>
                 <div class="form-group ml-2">
-                    <button class="btn " onclick="handleClear()">Clear</button>
+                    <button class="btn " onclick="handleClear()">@lang('lang.clear')</button>
                 </div>
             
             </div>
@@ -103,7 +103,7 @@
           </div>
           @if (auth()->user()->hasPermission('add_employees'))
           <div class="col-md-6">
-            <a href="{{route('dashboard.employees.create')}}" class="btn btn-success">Add Employees <i class="fa fa-plus" style="font-size: 15px;"></i></a>
+            <a href="{{route('dashboard.employees.create')}}" class="btn btn-success">@lang('lang.create') @lang('lang.employees') <i class="fa fa-plus" style="font-size: 15px;"></i></a>
           </div>
           @endif
         
@@ -114,20 +114,19 @@
             <table class="table table-striped" id="employee-table">
                 <thead>
                   <tr>
-                    <th> Image </th>
-                    <th> Link </th>
-                    <th> Name </th>
-                    <th> Email </th>
-                    <th> Phone </th>
-                    <th> Age </th>
-                    <th> Gender </th>
-                    <th> National ID </th>
-                    <th> Job </th>
-                    <th> Salary </th>
-                    <th> Status </th>
-                    <th> Created By </th>
-
-                    <th> Actions </th>
+                    <th> @lang('lang.image') </th>
+                    <th> @lang('lang.link') </th>
+                    <th> @lang('lang.name') </th>
+                    <th> @lang('lang.email') </th>
+                    <th> @lang('lang.phone') </th>
+                    <th> @lang('lang.date_of_birth') </th>
+                    <th> @lang('lang.gender') </th>
+                    <th> @lang('lang.national_id') </th>
+                    <th> @lang('lang.job') </th>
+                    <th> @lang('lang.salary') </th>
+                    <th> @lang('lang.status') </th>
+                    <th> @lang('lang.created_by') </th>
+                    <th> @lang('lang.actions') </th>
                   </tr>
                 </thead>
                 <tbody>
@@ -251,7 +250,7 @@ function deleteConfirmation(id) {
 
                 $.ajax({
                     type: 'GET',
-                    url: "{{url('employees/delete')}}/" + id,
+                    url: "{{url('dashboard/employees/delete')}}/" + id,
                     data: {_token: CSRF_TOKEN},
                     dataType: 'JSON',
                     success: function (results) {

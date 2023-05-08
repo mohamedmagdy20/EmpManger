@@ -3,11 +3,11 @@
 @section('content')
 
 <div class="page-header">
-  <h3 class="page-title"> Users</h3>
+  <h3 class="page-title"> @lang('lang.users')</h3>
   <nav aria-label="breadcrumb">
     <ol class="breadcrumb">
-      <li class="breadcrumb-item"><a href="{{route('dashboard')}}">Dashboard</a></li>
-      <li class="breadcrumb-item active"><a href="{{route('dashboard.users.index')}}">Users</a></li>
+      <li class="breadcrumb-item"><a href="{{route('dashboard')}}">@lang('lang.dashboard')</a></li>
+      <li class="breadcrumb-item active"><a href="{{route('dashboard.users.index')}}">@lang('lang.users')</a></li>
    
     </ol>
   </nav>
@@ -18,11 +18,11 @@
       <div class="card-body">
         <div class="row justify-content-between align-items-center">
           <div class="col-md-6">
-            <h4 class="card-title">Show Users</h4>
+            <h4 class="card-title">@lang('lang.show') @lang('lang.users')</h4>
           </div>
     @if (auth()->user()->hasPermission('add_user'))
       <div class="col-md-6">
-        <a href="{{route('dashboard.users.create')}}" class="btn btn-success">Add Users <i class="fa fa-plus" style="font-size: 15px;"></i></a>
+        <a href="{{route('dashboard.users.create')}}" class="btn btn-success">@lang('lang.create') @lang('lang.users') <i class="fa fa-plus" style="font-size: 15px;"></i></a>
       </div>
     @endif
            </div>
@@ -32,12 +32,12 @@
             <table class="table table-striped" id="user-table">
                 <thead>
                   <tr>
-                    <th> Image </th>
-                    <th> Name </th>
-                    <th> Email </th>
-                    <th> Status </th>
-                    <th> Created By </th>
-                    <th> Actions </th>
+                    <th> @lang('lang.image') </th>
+                    <th> @lang('lang.name') </th>
+                    <th> @lang('lang.email') </th>
+                    <th> @lang('lang.status') </th>
+                    <th> @lang('lang.created_by') </th>
+                    <th> @lang('lang.actions') </th>
                   </tr>
                 </thead>
                 <tbody>
@@ -121,7 +121,7 @@ function deleteConfirmation(id) {
 
                 $.ajax({
                     type: 'GET',
-                    url: "{{url('users/delete')}}/" + id,
+                    url: "{{url('dashboard/users/delete')}}/" + id,
                     data: {_token: CSRF_TOKEN},
                     dataType: 'JSON',
                     success: function (results) {

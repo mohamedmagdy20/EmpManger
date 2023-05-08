@@ -18,9 +18,9 @@
         @break
     @case('status')
         @if ($data->status == false)
-            <span class="btn btn-sm btn-warning">Deactive</span>
+            <span class="btn btn-sm btn-warning">@lang('lang.deactive')</span>
         @else
-            <span class="btn btn-sm btn-success">Active</span>
+            <span class="btn btn-sm btn-success">@lang('lang.active')</span>
         @endif
     @break
     @default

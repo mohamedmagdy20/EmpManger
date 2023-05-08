@@ -1,47 +1,50 @@
 @extends('dashboard')
 @section('content')
 <div class="row">
-    <div class="col-xl-3 col-lg-6 col-sm-6 grid-margin stretch-card">
+    {{-- <div class="col-xl-3 col-lg-6 col-sm-6 grid-margin stretch-card">
       <div class="card">
         <div class="card-body text-center">
           <h5 class="mb-2 text-dark font-weight-normal">Requests</h5>
           <h2 class="mb-4 text-dark font-weight-bold">5</h2>
           <div class="dashboard-progress dashboard-progress-1 d-flex align-items-center justify-content-center item-parent"><i class="mdi mdi-lightbulb icon-md absolute-center text-dark"></i></div>
           <p class="mt-4 mb-0">Completed</p>
-          <h3 class="mb-0 font-weight-bold mt-2 text-dark">5443</h3>
+          <h3 class="mb-0 font-weight-bold mt-2 text-dark"></h3>
         </div>
       </div>
-    </div>
-    <div class="col-xl-3 col-lg-6 col-sm-6 grid-margin stretch-card">
+    </div> --}}
+    <div class="col-xl-4 col-lg-6 col-sm-6 grid-margin stretch-card">
       <div class="card">
         <div class="card-body text-center">
-          <h5 class="mb-2 text-dark font-weight-normal">Employees</h5>
-          <h2 class="mb-4 text-dark font-weight-bold">10</h2>
+          <h5 class="mb-2 text-dark font-weight-normal">@lang('lang.employees')</h5>
+          <h2 class="mb-4 text-dark font-weight-bold">{{$employees}}</h2>
+          
           <div class="dashboard-progress dashboard-progress-2 d-flex align-items-center justify-content-center item-parent"><i class="mdi mdi-account-circle icon-md absolute-center text-dark"></i></div>
-          <p class="mt-4 mb-0">Increased since yesterday</p>
-          <h3 class="mb-0 font-weight-bold mt-2 text-dark">50%</h3>
+          <p class="mt-4 mb-0">@lang('lang.number_of') @lang('lang.employees')</p>
+          {{-- <h3 class="mb-0 font-weight-bold mt-2 text-dark"></h3> --}}
         </div>
       </div>
     </div>
-    <div class="col-xl-3  col-lg-6 col-sm-6 grid-margin stretch-card">
+    <div class="col-xl-4  col-lg-6 col-sm-6 grid-margin stretch-card">
       <div class="card">
         <div class="card-body text-center">
-          <h5 class="mb-2 text-dark font-weight-normal">Users</h5>
-          <h2 class="mb-4 text-dark font-weight-bold">6</h2>
+          <h5 class="mb-2 text-dark font-weight-normal">@lang('lang.employees')</h5>
+          <h2 class="mb-4 text-dark font-weight-bold">{{$users}}</h2>
+          <br>
           <div class="dashboard-progress dashboard-progress-3 d-flex align-items-center justify-content-center item-parent"><i class="mdi mdi-eye icon-md absolute-center text-dark"></i></div>
-          <p class="mt-4 mb-0">Increased since yesterday</p>
-          <h3 class="mb-0 font-weight-bold mt-2 text-dark">35%</h3>
+          <p class="mt-4 mb-0">@lang('lang.number_of') @lang('lang.users')</p>
+          {{-- <h3 class="mb-0 font-weight-bold mt-2 text-dark">35%</h3> --}}
         </div>
       </div>
     </div>
-    <div class="col-xl-3 col-lg-6 col-sm-6 grid-margin stretch-card">
+    <div class="col-xl-4 col-lg-6 col-sm-6 grid-margin stretch-card">
       <div class="card">
         <div class="card-body text-center">
-          <h5 class="mb-2 text-dark font-weight-normal">Jobs</h5>
-          <h2 class="mb-4 text-dark font-weight-bold">3</h2>
+          <h5 class="mb-2 text-dark font-weight-normal">@lang('lang.job')</h5>
+          <h2 class="mb-4 text-dark font-weight-bold">{{$jobs}}</h2>
+          
           <div class="dashboard-progress dashboard-progress-4 d-flex align-items-center justify-content-center item-parent"><i class="mdi mdi-cube icon-md absolute-center text-dark"></i></div>
-          <p class="mt-4 mb-0">Decreased since yesterday</p>
-          <h3 class="mb-0 font-weight-bold mt-2 text-dark">25%</h3>
+          <p class="mt-4 mb-0">@lang('lang.number_of') @lang('lang.job')</p>
+          {{-- <h3 class="mb-0 font-weight-bold mt-2 text-dark">25%</h3> --}}
         </div>
       </div>
     </div>
@@ -146,4 +149,4 @@
     </div>
   </div> --}}
    
-@endsection
+@endsection 

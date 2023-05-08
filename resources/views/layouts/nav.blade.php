@@ -26,25 +26,25 @@
               <i class="flag-icon flag-icon-us" title="us" id="us"></i>
             </div>
             <div class="nav-language-text">
-              <p class="mb-1 text-black">English</p>
+              <p class="mb-1 text-black">@lang('lang.language')</p>
             </div>
           </a>
           <div class="dropdown-menu navbar-dropdown" aria-labelledby="languageDropdown">
-            <a class="dropdown-item" href="#">
+            <a class="dropdown-item" href="{{route('change-lang','ar')}}">
               <div class="nav-language-icon mr-2">
                 <i class="flag-icon flag-icon-ae" title="ae" id="ae"></i>
               </div>
               <div class="nav-language-text">
-                <p class="mb-1 text-black">Arabic</p>
+                <p class="mb-1 text-black">@lang('lang.arabic')</p>
               </div>
             </a>
             <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="#">
+            <a class="dropdown-item" href="{{route('change-lang','en')}}">
               <div class="nav-language-icon mr-2">
                 <i class="flag-icon flag-icon-gb" title="GB" id="gb"></i>
               </div>
               <div class="nav-language-text">
-                <p class="mb-1 text-black">English</p>
+                <p class="mb-1 text-black">@lang('lang.english')</p>
               </div>
             </a>
           </div>

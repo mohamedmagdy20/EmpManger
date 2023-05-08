@@ -3,11 +3,11 @@
 @section('content')
 
 <div class="page-header">
-  <h3 class="page-title">Employee Requests</h3>
+  <h3 class="page-title">@lang('lang.employees') @lang('lang.requests')</h3>
   <nav aria-label="breadcrumb">
     <ol class="breadcrumb">
-      <li class="breadcrumb-item"><a href="{{route('dashboard')}}">Dashboard</a></li>
-      <li class="breadcrumb-item active"><a href="{{route('dashboard.users.index')}}">Requests</a></li>
+      <li class="breadcrumb-item"><a href="{{route('dashboard')}}">@lang('lang.dashboard')</a></li>
+      <li class="breadcrumb-item active"><a href="{{route('dashboard.users.index')}}">@lang('lang.requests')</a></li>
    
     </ol>
   </nav>
@@ -22,9 +22,9 @@
 
         <div class="col-md-4">
             <div class="form-group">
-                <label for="employee_id">Employee</label>
+                <label for="employee_id">@lang('lang.employees')</label>
                 <select name="employee_id" class="form-select select2" id="employee_id">
-                    <option value="">Select Employees</option>
+                    <option value="">@lang('lang.employees')</option>
                     @foreach ($data as $d )
                     <option value="{{$d->id}}">{{$d->name}}</option>                        
                     @endforeach
@@ -34,12 +34,12 @@
         </div>
         <div class="col-md-4">
             <div class="form-group">
-                <label for="type">Type</label>
+                <label for="type">@lang('lang.type')</label>
                 <select name="type" class="form-select" id="type">
-                    <option value="new">New</option>
-                    <option value="rl">Replacement of lost</option>
-                    <option value="da">Damaged allowance</option>
-                    <option value="renewal">Renewal</option>
+                    <option value="new">@lang('lang.new')</option>
+                    <option value="rl">@lang('lang.rl')</option>
+                    <option value="da">@lang('lang.da')</option>
+                    <option value="renewal">@lang('lang.renewal')</option>
                 </select>
             </div>
           
@@ -47,10 +47,10 @@
 
         <div class="col-md-4">
             <div class="form-group">
-                <label for="status">Status</label>
+                <label for="status">@lang('lang.status')</label>
                 <select name="status" class="form-select" id="status">
-                    <option value="{{old('status','1')}}">Active</option>
-                    <option value="{{old('status','0')}}">Deactive</option>
+                    <option value="{{old('status','1')}}">@lang('lang.status')</option>
+                    <option value="{{old('status','0')}}">@lang('lang.deactive')</option>
                 </select>
             </div>
           
@@ -59,24 +59,24 @@
         
         <div class="col-md-4">
             <div class="form-group">
-                <label for="request_status">Request Status</label>
+                <label for="request_status">@lang('lang.request_type')</label>
                 <select name="request_status" class="form-select" id="request_status">
-                    <option value="new">New</option>
-                    <option value="on_process">On Process</option>
-                    <option value="finished">Finished</option>
+                    <option value="new">@lang('lang.new')</option>
+                    <option value="on_process">@lang('lang.on_process')</option>
+                    <option value="finished">@lang('lang.finished')</option>
                 </select>
             </div>
           
         </div>
         <div class="col-md-4">
             <div class="form-group">
-                <label for="date_from">Date From</label>
+                <label for="date_from">@lang('lang.date_from')</label>
                 <input type="date" name="date_from" class="form-control" id="date_from">
             </div>
         </div>
         <div class="col-md-4">
             <div class="form-group">
-                <label for="date_from">Date To</label>
+                <label for="date_from">@lang('lang.date_to')</label>
                 <input type="date" name="date_to" class="form-control" id="date_to">
             </div>
         </div>
@@ -85,10 +85,10 @@
         <div class="col-md-6 mt-4">
             <div class="d-flex">
                 <div class="form-group ">
-                    <button class="btn btn-primary" onclick="handleFilter()">Search <i class="fa-solid fa-magnifying-glass"></i></button>
+                    <button class="btn btn-primary" onclick="handleFilter()">@lang('lang.search') <i class="fa-solid fa-magnifying-glass"></i></button>
                 </div>
                 <div class="form-group ml-2">
-                    <button class="btn " onclick="handleClear()">Clear</button>
+                    <button class="btn " onclick="handleClear()">@lang('lang.clear')</button>
                 </div>
             
             </div>
@@ -109,11 +109,11 @@
       <div class="card-body">
         <div class="row justify-content-between align-items-center">
           <div class="col-md-6">
-            <h4 class="card-title">Show Employee Requests</h4>
+            <h4 class="card-title">@lang('lang.show') @lang('lang.employees') @lang('lang.requests')</h4>
           </div>
           @if (auth()->user()->hasPermission('add_requests'))
           <div class="col-md-6">
-            <a href="{{route('dashboard.requests.create')}}" class="btn btn-success">Add Request <i class="fa fa-plus" style="font-size: 15px;"></i></a>
+            <a href="{{route('dashboard.requests.create')}}" class="btn btn-success"> @lang('lang.create') @lang('lang.requests') <i class="fa fa-plus" style="font-size: 15px;"></i></a>
           </div>
           @endif
         
@@ -124,14 +124,14 @@
             <table class="table table-striped" id="employee-table">
                 <thead>
                   <tr>
-                    <th> Employee </th>
-                    <th> Type </th>
-                    <th> Status </th>
-                    <th> Request Status </th>
-                    <th> Change Status </th>
-                    <th> Created At</th>
-                    <th> Created By</th>
-                    <th> Actions </th>  
+                    <th> @lang('lang.employees') </th>
+                    <th> @lang('lang.type') </th>
+                    <th> @lang('lang.status') </th>
+                    <th> @lang('lang.request_type') </th>
+                    <th> @lang('lang.change') @lang('lang.request_type') </th>
+                    <th> @lang('lang.date')</th>
+                    <th> @lang('lang.created_by')</th>
+                    <th> @lang('lang.actions') </th>  
                   </tr>
                 </thead>
                 <tbody>
@@ -220,7 +220,7 @@
     
                     $.ajax({
                         type: 'GET',
-                        url: "{{url('requests/delete')}}/" + id,
+                        url: "{{url('dashboard/requests/delete')}}/" + id,
                         data: {_token: CSRF_TOKEN},
                         dataType: 'JSON',
                         success: function (results) {

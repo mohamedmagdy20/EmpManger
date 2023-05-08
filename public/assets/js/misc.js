@@ -14,7 +14,7 @@
       // console.log(element);
       element.addClass('active');
 
-      if (current === "index") {
+      if (current === "") {
         // for root url
         if (element.attr('href').indexOf("index") !== -1) {
           element.parents('.nav-item').last().addClass('active');

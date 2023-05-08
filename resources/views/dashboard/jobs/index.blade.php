@@ -3,11 +3,11 @@
 
 
 <div class="page-header">
-    <h3 class="page-title"> Jobs</h3>
+    <h3 class="page-title"> @lang('lang.job')</h3>
     <nav aria-label="breadcrumb">
       <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="{{route('dashboard')}}">Dashboard</a></li>
-        <li class="breadcrumb-item active"><a href="">Jobs</a></li>
+        <li class="breadcrumb-item"><a href="{{route('dashboard')}}">@lang('lang.dashboard')</a></li>
+        <li class="breadcrumb-item active"><a href="">@lang('lang.job')</a></li>
      
       </ol>
     </nav>
@@ -18,11 +18,11 @@
         <div class="card-body">
           <div class="row justify-content-between align-items-center">
             <div class="col-md-6">
-              <h4 class="card-title">Show Jobs</h4>
+              <h4 class="card-title">@lang('lang.show') @lang('lang.job')</h4>
             </div>
             @if (auth()->user()->hasPermission('add_jobs'))
               <div class="col-md-6">
-                <a href="{{route('dashboard.jobs.create')}}" class="btn btn-success">Add Jobs <i class="fa fa-plus" style="font-size: 15px;"></i></a>
+                <a href="{{route('dashboard.jobs.create')}}" class="btn btn-success">@lang('lang.create') @lang('lang.job') <i class="fa fa-plus" style="font-size: 15px;"></i></a>
               </div>                
             @endif
           </div>
@@ -32,10 +32,10 @@
               <table class="table table-striped" id="job-table">
                   <thead>
                     <tr>
-                      <th> Name </th>
-                      <th> Description</th>
-                      <th>Created By</th>
-                      <th> Actions </th>
+                      <th> @lang('lang.name') </th>
+                      <th> @lang('lang.description')</th>
+                      <th>@lang('lang.created_by')</th>
+                      <th> @lang('lang.actions') </th>
                     </tr>
                   </thead>
                   <tbody>
@@ -115,7 +115,7 @@ function deleteConfirmation(id) {
 
                 $.ajax({
                     type: 'GET',
-                    url: "{{url('jobs/delete')}}/" + id,
+                    url: "{{url('dashboard/jobs/delete')}}/" + id,
                     data: {_token: CSRF_TOKEN},
                     dataType: 'JSON',
                     success: function (results) {

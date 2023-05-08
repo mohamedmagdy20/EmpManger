@@ -21,6 +21,7 @@ class Employee extends Model
         'national_id',
         'gender',
         'image_link',
+        'created_by',
         'salary'
     ];
 

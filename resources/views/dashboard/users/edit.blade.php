@@ -2,12 +2,12 @@
 
 @section('content')
 <div class="page-header">
-    <h3 class="page-title"> Add User</h3>
+    <h3 class="page-title"> @lang('lang.edit') @lang('lang.users')</h3>
     <nav aria-label="breadcrumb">
       <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="{{route('dashboard')}}">Dashboard</a></li>
-        <li class="breadcrumb-item "><a href="{{route('dashboard.users.index')}}">Users</a></li>
-        <li class="breadcrumb-item active"><a href="{{route('dashboard.users.create')}}">Edit User</a></li>
+        <li class="breadcrumb-item"><a href="{{route('dashboard')}}">@lang('lang.dashboard')</a></li>
+        <li class="breadcrumb-item "><a href="{{route('dashboard.users.index')}}">@lang('lang.users')</a></li>
+        <li class="breadcrumb-item active"><a href="{{route('dashboard.users.create')}}">@lang('lang.edit') @lang('lang.users')</a></li>
       </ol>
     </nav>
     
@@ -16,13 +16,13 @@
     <div class="col-12 grid-margin stretch-card">
         <div class="card">
           <div class="card-body">
-            <h4 class="card-title">Edit {{$data->name}} Info</h4>
+            <h4 class="card-title">@lang('lang.edit') {{$data->name}} </h4>
             <form class="forms-sample" method="POST" action="{{route('dashboard.users.update',$data->id)}}" enctype="multipart/form-data">
                 @csrf
                 <div class="row">
                     <div class="col-md-6">
                         <div class="form-group">
-                            <label for="exampleInputName1">Name</label>
+                            <label for="exampleInputName1">@lang('lang.name')</label>
                             <input type="text" class="form-control" name="name" id="exampleInputName1" value="{{old('name', $data->name ?? '')}}" placeholder="Name">
                             @error('name')
                             <span class="text-danger"> {{ $message }} </span>
@@ -31,7 +31,7 @@
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
-                            <label for="exampleInputEmail3">Email address</label>
+                            <label for="exampleInputEmail3">@lang('lang.email')</label>
                             <input type="email" class="form-control" name="email" id="exampleInputEmail3"  value="{{old('email', $data->email ?? '')}}" placeholder="Email">
                             @error('email')
                             <span class="text-danger"> {{ $message }} </span>
@@ -41,7 +41,7 @@
 
                     <div class="col-md-6">
                         <div class="form-group">
-                            <label for="exampleInputPassword4">Password</label>
+                            <label for="exampleInputPassword4">@lang('lang.password')</label>
                             <input type="password" class="form-control" name="password" id="exampleInputPassword4"  value="{{old('password')}}" placeholder="Password">
                           </div>
                           @error('email')
@@ -50,13 +50,13 @@
                         </div>
                     <div class="col-md-6">
                         <div class="form-group">
-                            <label for="exampleInputPassword4">Confirm Password</label>
+                            <label for="exampleInputPassword4">@lang('lang.confirm_password')</label>
                             <input type="password" class="form-control" name="password_confirmation" id="exampleInputPassword4"  value="{{old('password_conformation')}}" placeholder="Password">
                           </div>
                     </div>
 
                     <div class="col-md-6">
-                        <label for="status">Status</label>
+                        <label for="status">@lang('lang.status')</label>
 
                         <div class="form-group ml-5">
                             <div class="form-check form-switch">
@@ -70,7 +70,7 @@
                     </div>
                     <div class="col-md-12 mb-3">
                         <div class="form-group">
-                            <label>Image</label>
+                            <label>@lang('lang.image')</label>
                             <input type="file" name="image" id="choose-file" class="form-control">
                             @error('image')
                             <span class="text-danger"> {{ $message }} </span>
@@ -85,7 +85,7 @@
 
 
                     <div class="col-md-12">
-                        <label for="">Roles</label>
+                        <label for="">@lang('lang.role')</label>
 
                         <div class="form-group ml-5">
 
@@ -106,8 +106,8 @@
               
             
             
-              <button type="submit" class="btn btn-primary mr-2">Submit</button>
-              <a href="{{route('dashboard.users.index')}}" class="btn btn-light">Cancel</a>
+              <button type="submit" class="btn btn-primary mr-2">@lang('lang.submit')</button>
+              <a href="{{route('dashboard.users.index')}}" class="btn btn-light">@lang('lang.cencel')</a>
             </form>
           </div>
         </div>

@@ -16,12 +16,12 @@
     <div class="col-12 grid-margin stretch-card">
         <div class="card">
           <div class="card-body">
-            <h4 class="card-title">Add Role</h4>
+            <h4 class="card-title">@lang('lang.create') @lang('lang.requests')</h4>
             <form class="forms-sample" method="POST" action="{{route('dashboard.requests.store')}}" enctype="multipart/form-data">
                 @csrf
                 <div class="row">
                     <div class="col-md-12">
-                        <label for="exampleInputemployee1">Employees</label>
+                        <label for="exampleInputemployee1">@lang('lang.employees')</label>
                         <div class="form-group">
                             <select name="employee_id" class="form-select" id="">
                                 @foreach ($data as $d )
@@ -36,12 +36,12 @@
 
                     <div class="col-md-12">
                         <div class="form-group">
-                            <label for="type">Type</label>
+                            <label for="type">@lang('lang.type')</label>
                             <select name="type" class="form-select" id="type">
-                                <option value="new">New</option>
-                                <option value="rl">Replacement of lost</option>
-                                <option value="da">Damaged allowance</option>
-                                <option value="renewal">Renewal</option>
+                                <option value="new">@lang('lang.new')</option>
+                                <option value="rl">@lang('lang.rl')</option>
+                                <option value="da">@lang('lang.da')</option>
+                                <option value="renewal">@lang('lang.renewal')</option>
                             </select>
                             @error('type')
                             <span class="text-danger"> {{ $message }} </span>
@@ -49,7 +49,7 @@
                         </div>
                     </div>
                     <div class="col-md-6">
-                        <label for="status">Status</label>
+                        <label for="status">@lang('lang.status')</label>
 
                         <div class="form-group ml-5">
                             <div class="form-check form-switch">
@@ -63,7 +63,7 @@
                     </div>
                     <div class="col-md-12">
                         <div class="form-group">
-                            <label for="desc">Descriptions</label>
+                            <label for="desc">@lang('lang.description')</label>
                             <textarea name="description" class="form-control description" id="description"  cols="30" rows="10">{{old('description')}}</textarea>
                             @error('description')
                             <span class="text-danger"> {{ $message }} </span>
@@ -75,8 +75,8 @@
               
             
             
-              <button type="submit" class="btn btn-primary mr-2">Submit</button>
-              <a href="{{route('dashboard.jobs.index')}}" class="btn btn-light">Cancel</a>
+              <button type="submit" class="btn btn-primary mr-2">@lang('lang.submit')</button>
+              <a href="{{route('dashboard.jobs.index')}}" class="btn btn-light">@lang('lang.cencel')</a>
             </form>
           </div>
         </div>

@@ -9,7 +9,7 @@
         <div class="card">
             <div class="card-body">
     
-                <h4 class="card-title">Edit Permissions For {{$role->display_name}}</h4>
+                <h4 class="card-title">@lang('lang.edit') @lang('lang.permissions')  {{$role->display_name}}</h4>
                 
                 <form method="post" action="{{ route('dashboard.permissions.update',$role->id) }}"  class="needs-validation"  novalidate >
                     @csrf
@@ -32,8 +32,8 @@
                 
                 <!-- end row -->
     
-                 <input type="submit" class="btn btn-primary " value="Save">
-                 <a href="{{route('dashboard.roles.index')}}" class="btn btn-light">Cencel</a>
+                 <input type="submit" class="btn btn-primary " value="@lang('lang.submit')">
+                 <a href="{{route('dashboard.roles.index')}}" class="btn btn-light">@lang('lang.cencel')</a>
                 </form>
                  
                
