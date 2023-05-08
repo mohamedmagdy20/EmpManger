@@ -24,7 +24,7 @@ class PermissionController extends GeneralController
     public function index($id)
     {
         $role = Role::find($id);
-        $permissions = $this->getData();
+        $permissions = $this->model->all();
         return view( $this->viewPath($this->view.'index'),['role'=>$role,'permissions'=>$permissions]);
 
     }

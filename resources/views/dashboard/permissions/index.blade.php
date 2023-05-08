@@ -18,11 +18,11 @@
                     @foreach ($permissions as $permission)
                     <div class="col-md-2 bg-white">
                         <div class="">
-                            <div class="checkbox checkbox-primary mb-2">
+                            <div class="checkbox checkbox-primary mb-2 ">
                                 <input id="{{ $permission->id }}" type="checkbox"
                                     {{ $role->hasPermission($permission->name) ? 'checked' : '' }}
                                     value="{{ $permission->id }}" name="permissions[]" class="form-check-input" >
-                                <label for="{{ $permission->id }}">{{ $permission->display_name }}</label>
+                                <label for="{{ $permission->id }}" style="padding-right: 20px">{{ App::isLocale('ar') ? $permission->description :  $permission->display_name }}</label>
                             </div>
                         </div>
                     </div> <!-- end col-->

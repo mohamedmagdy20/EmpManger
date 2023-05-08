@@ -4,10 +4,10 @@
       <a class="navbar-brand brand-logo-mini" href="index.html"><img src="assets/images/logo-mini.svg" alt="logo" /></a>
     </div>
     <div class="navbar-menu-wrapper d-flex align-items-stretch">
-      {{-- <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
+      <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
         <span class="mdi mdi-menu"></span>
       </button>
-      <div class="search-field d-none d-xl-block">
+      {{-- <div class="search-field d-none d-xl-block">
         <form class="d-flex align-items-center h-100" action="#">
           <div class="input-group">
             <div class="input-group-prepend bg-transparent">
@@ -64,7 +64,7 @@
             </div> 
             <div class="p-2">
               <h5 class="dropdown-header text-uppercase pl-2 text-dark">User Options</h5>
-              <a class="dropdown-item py-1 d-flex align-items-center justify-content-between" href="#">
+              <a class="dropdown-item py-1 d-flex align-items-center justify-content-between" href="{{route('dashboard.users.profile.index')}}">
                 <span>Profile</span>
                 <span class="p-0">
                   {{-- <span class="badge badge-success">1</span> --}}

@@ -5,6 +5,7 @@ use App\Http\Controllers\Dashboard\HomeController;
 use App\Http\Controllers\Dashboard\JobController;
 use App\Http\Controllers\Dashboard\LoginHistoryController;
 use App\Http\Controllers\Dashboard\PermissionController;
+use App\Http\Controllers\Dashboard\ProfileController;
 use App\Http\Controllers\Dashboard\RequestController;
 use App\Http\Controllers\Dashboard\RoleController;
 use App\Http\Controllers\Dashboard\UserController;
@@ -13,6 +14,9 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::get('/',[HomeController::class,'index'])->middleware(['auth'])->name('dashboard');
+Route::get('/gender',[HomeController::class,'gender'])->middleware(['auth'])->name('gender-chart');
+Route::get('/request-chart',[HomeController::class,'requestChart'])->middleware(['auth'])->name('request-chart');
+
 
 Route::get('change-lang/{locale}',[LocalizationController::class,'setLang'])->name('change-lang');
 $mainPrefix = 'dashboard/';
@@ -32,6 +36,17 @@ Route::group(['middleware' => 'auth','prefix' => $mainPrefix.'users'], function 
 });
 
 
+Route::group(['middleware' => 'auth','prefix' => $mainPrefix.'users/profile'], function (){
+    $route = 'dashboard.users.profile.';
+    
+    Route::get('index',[ProfileController::class,'index'])->middleware('permission:show_user')->name($route.'index');
+    Route::get('change-password',[ProfileController::class,'changePasswordView'])->middleware('permission:show_user')->name($route.'change-password-view');
+    Route::post('edit',[ProfileController::class,'update'])->middleware('permission:add_user')->name($route.'edit-profile');
+    Route::post('change-password',[ProfileController::class,'changePassword'])->middleware('permission:edit_user')->name($route.'change-password');
+
+});
+
+
 
 Route::group(['middleware' => 'auth','prefix' =>  $mainPrefix.'roles'], function (){
     $route = 'dashboard.roles.';
@@ -47,7 +62,7 @@ Route::group(['middleware' => 'auth','prefix' =>  $mainPrefix.'roles'], function
 
 Route::group(['middleware' => 'auth','prefix' =>  $mainPrefix.'permissions'], function (){
     $route = 'dashboard.permissions.';
-    Route::get('edit/{id}',[PermissionController::class,'index'])->middleware('permission:show_permissions')->name($route.'edit');
+    Route::get('{id}/edit',[PermissionController::class,'index'])->middleware('permission:show_permissions')->name($route.'edit');
     Route::post('update/{id}',[PermissionController::class,'updatePermission'])->middleware('permission:edit_permissions')->name($route.'update');
 });
 

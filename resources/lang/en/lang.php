@@ -29,6 +29,10 @@ return [
     'change'=>'change',
 
     'number_of'=>'Number of',
+    'new'=>'New',
+
+    'change-password'=>'Change Password',
+
 
 
     

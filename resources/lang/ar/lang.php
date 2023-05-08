@@ -47,6 +47,7 @@ return [
     'change'=>'تغير',
 
     'number_of'=>'عدد',
+    'new'=>'جديد',
 
 
 
@@ -62,5 +63,7 @@ return [
     'language'=>'اللغة',
     'english'=>'الانجليزية',
     'arabic'=>'العربية',
+
+    'change-password'=>'تغير كلمه المرور'
    
 ];

@@ -151,8 +151,11 @@ class PermissionSeeder extends Seeder
                 'display_name'=>'Delete Requests',
                 'description'=>'حذف الطلبات'
             ],
-
-
+            [
+                'name'=>'show_reports',
+                'display_name'=>'Show Reports',
+                'description'=>'عرض التقارير'
+            ]
         ];
 
         foreach($data as $d)
