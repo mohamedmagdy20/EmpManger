@@ -23,9 +23,9 @@
                     <div class="col-md-12">
                         <label for="exampleInputemployee1">@lang('lang.employees')</label>
                         <div class="form-group">
-                            <select name="employee_id" class="form-select" id="">
+                            <select name="employee_id" class="" id="select-beast">
                                 @foreach ($emps as $d )
-                                    <option value="{{$d->id}}" {{ old('employee_id', $data->employee_id ?? null) == $d->id ? 'selected' : '' }}>{{$d->name}}</option>
+                                    <option value="{{$d->id}}" {{ old('employee_id', $data->employee_id ?? null) == $d->id ? 'selected' : '' }}>{{$d->national_id}} : {{$d->name}}</option>
                                 @endforeach
                             </select>
                             @error('employee_id')

@@ -52,8 +52,8 @@ class RequestController extends GeneralController
 
         if($request->date_from && $request->data_to)
         {
-            $datefrom = Carbon::parse($request->date_from);
-            $dateto = Carbon::parse($request->data_to);
+            $datefrom = Carbon::parse($request->date_from)->toDateString();
+            $dateto = Carbon::parse($request->data_to)->toDateString();
             $data = $data->whereBetween('created_at',[$datefrom,$dateto]);
         }
 

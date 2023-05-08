@@ -23,7 +23,7 @@
         <div class="col-md-4">
             <div class="form-group">
                 <label for="employee_id">@lang('lang.employees')</label>
-                <select name="employee_id" class="form-select" id="employee_id">
+                <select name="employee_id" class="employee_id" id="select-beast">
                     <option value="">@lang('lang.employees')</option>
                     @foreach ($data as $d )
                     <option value="{{$d->id}}">{{$d->name}}</option>                        
@@ -266,7 +266,8 @@
     }
 
     function handleFilter() {
-            employee_id = $('#employee_id').val() || '';
+            employee_id = $('.employee_id').val() || '';
+            // console.log(employee_id)
             type = $('#type').val() || '';
             status = $('#status').val() || '';
             
@@ -276,14 +277,14 @@
        
             if (UsersTable) {
                 var url = "{{ route('dashboard.requests.data') }}" + `?employee_id=${employee_id}&type=${type}&status=${status}&request_status=${request_status}&date_from=${date_from}&date_to=${date_to}`;
-                // console.log(url);
+                console.log(url);
                 UsersTable.ajax.url(url).load()
             }
         }
 
         function handleClear() {
             
-            $('#employee_id').val('');
+            $('.employee_id').val('');
             $('#type').val('');
             $('#status').val('');
             

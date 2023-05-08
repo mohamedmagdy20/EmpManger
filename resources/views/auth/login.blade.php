@@ -20,12 +20,31 @@
     <link rel="stylesheet" href="{{asset('assets/css/style.css')}}">
     <link rel="stylesheet" href="{{asset('assets/images/favicon.png')}}">
 
+    <style>
+      .content-wrapper {
+        position: relative;
+        background: url('assets/images/login.jpg') center center no-repeat fixed; 
+        background-size: cover;
+
+      }
+      .layer{
+        background-color: rgba(0, 0, 0, 0.7);
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+
+      }
+    </style>
     <!-- End layout styles -->
   </head>
   <body>
     <div class="container-scroller">
       <div class="container-fluid page-body-wrapper full-page-wrapper">
         <div class="content-wrapper d-flex align-items-center auth">
+          <div class="layer"></div>
+
           <div class="row flex-grow">
             <div class="col-lg-4 mx-auto">
               <div class="auth-form-light text-left p-5">

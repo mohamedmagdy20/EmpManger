@@ -26,17 +26,24 @@ class ProfileController extends GeneralController
 
     public function update(Request $request)
     {
+        $image = '';
         $request->validate([
             'name'=>'required',
             'email'=>'required',
             'image'=>'image'
         ]);
+
         if($request->hasFile('image'))
         {
             $image = $this->updateImage($request->file('image'),auth()->user()->image,config('path.USERS_PATH'));
         }
         $data =$this->findData(auth()->user()->id);
-        $data->update(array_merge($request->all(),['image'=>$image]));
+        if($image)
+        {
+            $data->update(array_merge($request->all(),['image'=>$image]));
+        }else{
+            $data->update($request->all());
+        }
         return redirect()->back()->with('success','Profile Updated');
     }
 
