@@ -44,7 +44,7 @@
                             <label for="exampleInputPassword4">@lang('lang.password')</label>
                             <input type="password" class="form-control" name="password" id="exampleInputPassword4"  value="{{old('password')}}" placeholder="Password">
                           </div>
-                          @error('email')
+                          @error('password')
                           <span class="text-danger"> {{ $message }} </span>
                           @enderror
                         </div>
@@ -90,7 +90,7 @@
 
                             @foreach ($data as $d )
                                     <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" value="{{$d->name}}" name="role" id="{{$d->name}}">
+                                        <input class="form-check-input" type="checkbox" value="{{$d->name}}" name="role[]" id="{{$d->name}}">
                                         <label class="form-check-label" for="{{$d->name}}">
                                          {{$d->display_name}}
                                         </label>

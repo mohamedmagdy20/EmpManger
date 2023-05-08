@@ -39,6 +39,10 @@ class UserController extends GeneralController
             return view($this->viewPath($this->view.'actions'),['type'=>'status','data'=>$model]);
 
         })
+        ->addColumn('roles',function($data){
+            return view($this->viewPath($this->view.'actions'),['type'=>'roles','data'=>$data]);
+
+        })
         ->editColumn('image',function($model){
             return view($this->viewPath($this->view.'actions'),['type'=>'image','data'=>$model]);
         })
@@ -76,7 +80,7 @@ class UserController extends GeneralController
 
         // Hash Password 
         $data['password'] = Hash::make($data['password']);
-        if($data['status'] == "on")
+        if($request->status)
         {
             $data['status'] = true;
         }else{
@@ -85,7 +89,7 @@ class UserController extends GeneralController
 
         $user = $this->model->create(array_merge($data,['created_by'=>auth()->user()->name]));
 
-        $user->attachRole($data['role']);
+        $user->syncRoles($data['role']);
         // Store in db 
 
         return redirect()->back()->with('success','User Added');
@@ -95,12 +99,13 @@ class UserController extends GeneralController
     public function update($id ,StoreRequest $request )
     {
         $data =  $request->validated();
-        if($data['status'] == "on")
+        if($request->status == 'on')
         {
-            $data['status'] = true;
+            $data['status'] = 1;
         }else{
-            $data['status'] = false;
+            $data['status'] = 0;
         }
+
         $user = $this->findData($id);
         if($request->file('image'))
         {
@@ -109,9 +114,10 @@ class UserController extends GeneralController
 
         $data['password'] = Hash::make($data['password']);
 
+        
         $user->update(array_merge($data,['created_by'=>auth()->user()->name]));
 
-        $user->attachRole($data['role']);
+        $user->syncRoles($data['role']);
 
         return redirect()->route('dashboard.users.index')->with('success','User Updated');
 

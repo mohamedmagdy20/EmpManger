@@ -23,7 +23,7 @@
         <div class="col-md-4">
             <div class="form-group">
                 <label for="employee_id">@lang('lang.employees')</label>
-                <select name="employee_id" class="form-select select2" id="employee_id">
+                <select name="employee_id" class="form-select" id="employee_id">
                     <option value="">@lang('lang.employees')</option>
                     @foreach ($data as $d )
                     <option value="{{$d->id}}">{{$d->name}}</option>                        

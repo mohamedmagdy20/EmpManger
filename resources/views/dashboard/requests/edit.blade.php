@@ -64,7 +64,7 @@
                     <div class="col-md-12">
                         <div class="form-group">
                             <label for="desc">@lang('lang.description')</label>
-                            <textarea name="description" class="form-control description" id="description"  cols="30" rows="10">{{old('description')}}</textarea>
+                            <textarea name="description" class="form-control description" id="description"  cols="30" rows="10">{!! $data->description !!}</textarea>
                             @error('description')
                             <span class="text-danger"> {{ $message }} </span>
                             @enderror  

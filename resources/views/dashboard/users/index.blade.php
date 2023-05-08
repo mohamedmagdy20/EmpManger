@@ -35,7 +35,9 @@
                     <th> @lang('lang.image') </th>
                     <th> @lang('lang.name') </th>
                     <th> @lang('lang.email') </th>
+                    <th>@lang('lang.role')</th>
                     <th> @lang('lang.status') </th>
+
                     <th> @lang('lang.created_by') </th>
                     <th> @lang('lang.actions') </th>
                   </tr>
@@ -89,6 +91,10 @@ function setUserDatatable() {
             {
                 data: 'email'
             },
+            {
+                data: 'roles'
+            },
+            
             {
                 data: 'status'
             },

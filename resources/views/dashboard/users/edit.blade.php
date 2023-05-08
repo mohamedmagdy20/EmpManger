@@ -76,7 +76,7 @@
                             <span class="text-danger"> {{ $message }} </span>
                             @enderror                           
                           </div>
-                          <img src="{{asset('uploads/users/'.$data->image)}}" alt="">
+                          <img class="w-25" src="{{asset('uploads/users/'.$data->image)}}" alt="">
 
                           <div id="img-preview"></div>
                 
@@ -91,7 +91,7 @@
 
                             @foreach ($roles as $d )
                                     <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" value="{{$d->name}}" name="role" id="{{$d->name}}" {{  optional($data->roles())->name == $d->name ? 'checked' : '' }}>
+                                        <input class="form-check-input" type="checkbox" value="{{$d->name}}" name="role[]" id="{{$d->name}}" {{ $data->hasRole($d->name)? 'checked' : '' }}>
                                         <label class="form-check-label" for="{{$d->name}}">
                                          {{$d->display_name}}
                                         </label>

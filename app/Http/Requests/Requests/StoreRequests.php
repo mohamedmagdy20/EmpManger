@@ -25,7 +25,7 @@ class StoreRequests extends FormRequest
     {
         return [
             'employee_id'=>'required',
-            'description'=>'nullable',
+            'description'=>'',
             'type'=>'required',
             'status'=>'nullable',
         ];

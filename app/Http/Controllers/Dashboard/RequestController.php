@@ -70,6 +70,10 @@ class RequestController extends GeneralController
         ->addColumn('change-status',function($data){
             return view($this->viewPath($this->view.'actions'),['type'=>'change-status','data'=>$data]);
         })
+        ->editColumn('type',function($data){
+            return view($this->viewPath($this->view.'actions'),['type'=>'type','data'=>$data]);
+
+        })
         ->editColumn('created_at',function($data){
         return $data->created_at->format('Y-m-d');
         })

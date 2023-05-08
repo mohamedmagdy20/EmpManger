@@ -23,6 +23,13 @@
             <span class="btn btn-sm btn-success">@lang('lang.active')</span>
         @endif
     @break
+
+    @case('roles')
+        @foreach ($data->roles as $role )
+            <p>{{$role->display_name}}</p> 
+         @endforeach
+   
+    @break
     @default
         
 @endswitch

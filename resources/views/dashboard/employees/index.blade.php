@@ -56,6 +56,15 @@
 
         
         <div class="col-md-6">
+            <div class="form-group">
+                <label for="salary_from">@lang('lang.date')</label>
+                <input type="date" name="age" class="form-control" id="age">
+            </div>
+        </div>
+
+
+        
+        <div class="col-md-6">
             <div class="row">
                 <div class="col-md-6">
                     <div class="form-group">
@@ -166,24 +175,24 @@ function setEmployeeDatatable() {
                 "next": "<i class='mdi mdi-chevron-right'>"
             },
         },
-        buttons: [
-           {
-                        extend: 'copy',
-                        className: 'btn btn-light'
-                    },
-                    {
-                        extend: 'print',
-                        className: 'btn btn-light'
-                    },
-                    {
-                        extend: 'pdf',
-                        className: 'btn btn-light'
-                    },
-                    {
-                        extend: 'csv',
-                        className: 'btn btn-light'
-                    },
-        ],
+        // buttons: [
+        //    {
+        //                 extend: 'copy',
+        //                 className: 'btn btn-light'
+        //             },
+        //             {
+        //                 extend: 'print',
+        //                 className: 'btn btn-light'
+        //             },
+        //             {
+        //                 extend: 'pdf',
+        //                 className: 'btn btn-light'
+        //             },
+        //             {
+        //                 extend: 'csv',
+        //                 className: 'btn btn-light'
+        //             },
+        // ],
         
         columns: [
             {

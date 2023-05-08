@@ -39,7 +39,7 @@ class UpdateEmployee extends FormRequest
                     'job_id'=>'required',
                     'image'=>'nullable|mimes:jpeg,jpg,png',
                     'age'=>'required|date',
-                    'status'=>'required',
+                    'status'=>'',
                     'national_id'=>[
                         'required',
                          Rule::unique('employees', 'national_id')->ignore($this->route('id'))

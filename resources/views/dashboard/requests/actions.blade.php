@@ -28,5 +28,22 @@
     @endif
 @break
 
+    @case('type')
+        
+    @if($data->type == 'new')
+    
+        <span>@lang('lang.new')</span> 
+    @elseif($data->type == 'rl')
+    
+       <span>@lang('lang.rl')</span> 
+    @elseif($data->type == 'da')
+    
+        <span>@lang('lang.da')</span> 
+    
+    @else
+       <span> @lang('lang.renewal')</span> 
+    @endif
+    @break
+
     @default     
 @endswitch

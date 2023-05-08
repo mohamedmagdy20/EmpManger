@@ -51,6 +51,11 @@ class EmployeeController extends GeneralController
         {
             $data = $data->whereBetween('salary',[$request->salary_from,$request->salary_to]);
         }
+        if($request->job_id)
+        {
+            $data = $data->where('job_id',$request->job_id);
+
+        }
         return DataTables::of($data)
         ->addColumn('actions',function($data)
         {
@@ -124,13 +129,13 @@ class EmployeeController extends GeneralController
 
         }
 
-        $data['password'] = Hash::make($data['password']);
+        // $data['password'] = Hash::make($data['password']);
 
-        if($data['status'] == "on")
+        if($request->status == 'on')
         {
-            $data['status'] = true;
+            $data['status'] = 1;
         }else{
-            $data['status'] = false;
+            $data['status'] = 0;
         }
 
         $this->model->create(array_merge($data,['created_by'=>auth()->user()->name]));
@@ -151,11 +156,11 @@ class EmployeeController extends GeneralController
         }
 
 
-        if($data['status'] == "on")
+        if($request->status == 'on')
         {
-            $data['status'] = true;
+            $data['status'] = 1;
         }else{
-            $data['status'] = false;
+            $data['status'] = 0;
         }
 
         $emp->update(array_merge($data,['created_by'=>auth()->user()->name]));

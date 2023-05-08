@@ -35,11 +35,11 @@ class StoreEmployee extends FormRequest
                 'required',
                 Rule::unique('employees', 'phone')->ignore($this->route('id'))
             ],
-            'password'=>'required|confirmed',
+            // 'password'=>'required|confirmed',
             'job_id'=>'required',
             'image'=>'nullable|mimes:jpeg,jpg,png',
             'age'=>'required',
-            'status'=>'required',
+            'status'=>'',
             'national_id'=>[
                 'required',
                  Rule::unique('employees', 'national_id')->ignore($this->route('id'))

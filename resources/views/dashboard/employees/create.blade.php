@@ -61,7 +61,7 @@
                         </div>
                     </div>
 
-                    <div class="col-md-6">
+                    {{-- <div class="col-md-6">
                         <div class="form-group">
                             <label for="exampleInputPassword4">@lang('lang.password')</label>
                             <input type="password" class="form-control" name="password" id="exampleInputPassword4"  value="{{old('password')}}" placeholder="@lang('lang.password')">
@@ -75,7 +75,7 @@
                             <label for="exampleInputPassword4">@lang('lang.confirm_password')</label>
                             <input type="password" class="form-control" name="password_confirmation" id="exampleInputPassword4"  value="{{old('password_conformation')}}" placeholder="@lang('lang.confirm_password')">
                           </div>
-                    </div>
+                    </div> --}}
 
                     <div class="col-md-6">
                         <label for="status">@lang('lang.status')</label>
